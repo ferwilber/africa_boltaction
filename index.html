@@ -70,11 +70,17 @@
     }
 
     .brand {
-      color: #f4e7ca;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.98rem;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 280px;
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.28));
     }
 
     .nav {
@@ -193,13 +199,27 @@
     }
 
     .hero-side {
-      min-height: 400px;
+      min-height: 500px;
       position: relative;
-      background:
-        linear-gradient(rgba(15, 11, 8, 0.28), rgba(15, 11, 8, 0.18)),
-        url('img/hero-principal.jpg') center top / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
       border-left: 1px solid var(--line);
-      filter: sepia(0.35) contrast(1.04) saturate(0.8);
+      background:
+        linear-gradient(rgba(15, 11, 8, 0.18), rgba(15, 11, 8, 0.08)),
+        radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 40%),
+        linear-gradient(180deg, rgba(216,194,154,0.85), rgba(184,146,88,0.82));
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      max-height: 456px;
+      display: block;
+      object-fit: contain;
+      object-position: center center;
+      filter: grayscale(1) sepia(0.35) contrast(1.04) saturate(0.8);
     }
 
     .map-tag {
@@ -279,12 +299,26 @@
       gap: 16px;
     }
 
+    .scenario-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+
     .scenario-card {
       background: rgba(255,255,255,0.15);
       border: 1px solid var(--line);
       padding: 16px;
       min-height: 250px;
       position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .scenario-link:hover .scenario-card {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 24px rgba(0,0,0,0.1);
+      border-color: rgba(122,47,33,0.5);
     }
 
     .scenario-number {
@@ -357,11 +391,25 @@
       gap: 14px;
     }
 
+    .photo-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+    }
+
     .photo {
       background: rgba(255,255,255,0.14);
       border: 1px solid var(--line);
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 100%;
+    }
+
+    .photo-link:hover .photo {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 24px rgba(0,0,0,0.12);
     }
 
     .photo img {
@@ -450,7 +498,7 @@
       .timeline-item { grid-template-columns: 1fr; }
 
       .hero-side {
-        min-height: 320px;
+        min-height: 360px;
         border-left: none;
         border-top: 1px solid var(--line);
       }
@@ -461,13 +509,32 @@
     @media (max-width: 700px) {
       .scenario-grid,
       .gallery-grid { grid-template-columns: 1fr; }
+
+      .brand-logo {
+        width: 220px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand">Duelo en la Arena</div>
+      <a class="brand" href="index.html" aria-label="Ir a la página principal de Duelo en la Arena">
+        <svg class="brand-logo" viewBox="0 0 520 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Duelo en la Arena">
+          <defs>
+            <linearGradient id="logoBg" x1="0" x2="1">
+              <stop offset="0%" stop-color="#ead9b6"/>
+              <stop offset="100%" stop-color="#cfb07a"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="8" width="516" height="104" rx="4" fill="url(#logoBg)" stroke="#7a2f21" stroke-width="3"/>
+          <path d="M22 60 H112" stroke="#7a2f21" stroke-width="3" stroke-dasharray="10 8"/>
+          <path d="M408 60 H498" stroke="#7a2f21" stroke-width="3" stroke-dasharray="10 8"/>
+          <text x="260" y="46" text-anchor="middle" fill="#2b2115" font-size="44" font-weight="900" letter-spacing="4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">DUELO</text>
+          <text x="260" y="70" text-anchor="middle" fill="#7a2f21" font-size="18" font-weight="700" letter-spacing="6" style="font-family: Georgia, serif;">EN LA</text>
+          <text x="260" y="104" text-anchor="middle" fill="#2b2115" font-size="56" font-weight="900" letter-spacing="3" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">ARENA</text>
+        </svg>
+      </a>
       <nav class="nav">
         <a href="#campana">Campaña</a>
         <a href="#mapa">Mapa</a>
@@ -485,8 +552,7 @@
         <div class="eyebrow">Campaña narrativa para Bolt Action</div>
         <h1>Duelo en la Arena</h1>
         <p class="subtitle">
-          La campaña sigue el pulso de la guerra en el desierto desde Tobruk hasta Túnez. Se trata de cinco partidas enlazadas: Tobruk, Gazala, Torch, Kasserine y la batalla final por Túnez. El conjunto mantiene continuidad histórica y reparte protagonismo entre Reino Unido, Italia, Estados Unidos y el Afrika Korps.
-         
+          La campaña sigue el pulso de la guerra en el desierto desde Tobruk hasta Túnez.
         </p>
         <div class="cta-row">
           <a class="btn primary" href="#escenarios">Ver operaciones</a>
@@ -494,12 +560,36 @@
         </div>
       </div>
       <div class="hero-side">
-        
+        <img class="hero-image" src="img/hero-principal.jpg" alt="Mandos del Eje y Aliados en la campaña del Norte de África">
+        <div class="map-tag">
+          <strong>Imagen principal:</strong><br>
+          Mando aliado y del Eje en el teatro norteafricano.<br>
+          <span class="smallcaps">Estética de cartel y archivo militar</span>
+        </div>
       </div>
     </div>
   </section>
 
   <main>
+    <section class="section" id="campana">
+      <h2 class="section-title">Resumen de campaña</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Estructura</h3>
+          <p>
+            La web queda organizada en cinco partidas enlazadas: Tobruk, Gazala, Torch, Kasserine y la batalla final por Túnez.
+            El conjunto mantiene continuidad histórica y reparte protagonismo entre Reino Unido, Italia, Estados Unidos y el Afrika Korps.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Lenguaje visual</h3>
+          <p>
+            El aspecto general se apoya en tonos de arena, papel envejecido, imágenes en blanco y negro del PDF y un mapa apaisado con aire de mapa operacional de la Segunda Guerra Mundial.
+          </p>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="mapa">
       <h2 class="section-title">Mapa operacional del Norte de África</h2>
       <div class="map-wrap">
@@ -582,91 +672,121 @@
     <section class="section" id="escenarios">
       <h2 class="section-title">Operaciones de campaña</h2>
       <div class="scenario-grid">
-        <article class="scenario-card">
-          <div class="scenario-number">Operación 1</div>
-          <h3>Tobruk — El perímetro resiste</h3>
-          <div class="meta">Abril 1941 · Reino Unido vs Italia</div>
-          <p>La guarnición aliada defiende el perímetro fortificado de Tobruk frente a ataques italianos.</p>
-          <p><strong>Terreno:</strong> fortificaciones, trincheras, alambradas y desierto abierto.</p>
-        </article>
+        <a class="scenario-link" href="tobruk.html">
+          <article class="scenario-card">
+            <div class="scenario-number">Operación 1</div>
+            <h3>Tobruk — El perímetro resiste</h3>
+            <div class="meta">Abril 1941 · Reino Unido vs Italia</div>
+            <p>La guarnición aliada defiende el perímetro fortificado de Tobruk frente a ataques italianos.</p>
+            <p><strong>Terreno:</strong> fortificaciones, trincheras, alambradas y desierto abierto.</p>
+          </article>
+        </a>
 
-        <article class="scenario-card">
-          <div class="scenario-number">Operación 2</div>
-          <h3>Gazala — Maniobra de Rommel</h3>
-          <div class="meta">Junio 1942 · Reino Unido vs DAK</div>
-          <p>Rommel lanza su ofensiva envolvente contra el frente británico.</p>
-          <p><strong>Terreno:</strong> desierto abierto, minas y posiciones artilleras.</p>
-        </article>
+        <a class="scenario-link" href="gazala.html">
+          <article class="scenario-card">
+            <div class="scenario-number">Operación 2</div>
+            <h3>Gazala — Maniobra de Rommel</h3>
+            <div class="meta">Junio 1942 · Reino Unido vs DAK</div>
+            <p>Rommel lanza su ofensiva envolvente contra el frente británico.</p>
+            <p><strong>Terreno:</strong> desierto abierto, minas y posiciones artilleras.</p>
+          </article>
+        </a>
 
-        <article class="scenario-card">
-          <div class="scenario-number">Operación 3</div>
-          <h3>Torch — Carrera hacia Túnez</h3>
-          <div class="meta">Diciembre 1942 · USA vs Italia</div>
-          <p>Tras el desembarco aliado, la carrera hacia Túnez fuerza nuevos choques en el interior.</p>
-          <p><strong>Terreno:</strong> pueblo u oasis, carretera y lomas bajas.</p>
-        </article>
+        <a class="scenario-link" href="torch.html">
+          <article class="scenario-card">
+            <div class="scenario-number">Operación 3</div>
+            <h3>Torch — Carrera hacia Túnez</h3>
+            <div class="meta">Diciembre 1942 · USA vs Italia</div>
+            <p>Tras el desembarco aliado, la carrera hacia Túnez fuerza nuevos choques en el interior.</p>
+            <p><strong>Terreno:</strong> pueblo u oasis, carretera y lomas bajas.</p>
+          </article>
+        </a>
 
-        <article class="scenario-card">
-          <div class="scenario-number">Operación 4</div>
-          <h3>Kasserine — Contraataque del Afrika Korps</h3>
-          <div class="meta">Febrero 1943 · USA vs DAK</div>
-          <p>El Afrika Korps golpea a fuerzas estadounidenses en un paso duro y encajonado.</p>
-          <p><strong>Terreno:</strong> collado montañoso, carretera y crestas rocosas.</p>
-        </article>
+        <a class="scenario-link" href="kasserine.html">
+          <article class="scenario-card">
+            <div class="scenario-number">Operación 4</div>
+            <h3>Kasserine — Contraataque del Afrika Korps</h3>
+            <div class="meta">Febrero 1943 · USA vs DAK</div>
+            <p>El Afrika Korps golpea a fuerzas estadounidenses en un paso duro y encajonado.</p>
+            <p><strong>Terreno:</strong> collado montañoso, carretera y crestas rocosas.</p>
+          </article>
+        </a>
 
-        <article class="scenario-card">
-          <div class="scenario-number">Final</div>
-          <h3>Túnez — Caída del Eje en África</h3>
-          <div class="meta">Mayo 1943 · USA + Reino Unido vs DAK + Italia</div>
-          <p>Ofensiva final aliada para tomar Túnez y cerrar definitivamente la campaña africana.</p>
-          <p><strong>Terreno:</strong> periferia urbana, vías de acceso y colinas exteriores.</p>
-        </article>
+        <a class="scenario-link" href="tunez.html">
+          <article class="scenario-card">
+            <div class="scenario-number">Final</div>
+            <h3>Túnez — Caída del Eje en África</h3>
+            <div class="meta">Mayo 1943 · USA + Reino Unido vs DAK + Italia</div>
+            <p>Ofensiva final aliada para tomar Túnez y cerrar definitivamente la campaña africana.</p>
+            <p><strong>Terreno:</strong> periferia urbana, vías de acceso y colinas exteriores.</p>
+          </article>
+        </a>
       </div>
     </section>
 
     <section class="section" id="galeria">
       <h2 class="section-title">Galería del dossier</h2>
       <div class="gallery-grid">
-        <figure class="photo">
-          <img src="img/page1_img1.jpeg" alt="Mandos del Eje y Aliados en la campaña del Norte de África">
-          <figcaption>Imagen principal del dossier, reutilizada como pieza central de la portada.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page2_img1.jpeg" alt="Explosión en el desierto durante los combates del Norte de África">
-          <figcaption>Bombardeo y paisaje abierto del desierto, útil para ambientar Tobruk y Gazala.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page2_img2.jpeg" alt="Infantería observando desde una posición rocosa en el desierto">
-          <figcaption>Observación y fuego desde posiciones avanzadas en terreno árido y descubierto.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page3_img1.jpeg" alt="Vehículo blindado en terreno desértico">
-          <figcaption>Reconocimiento blindado en un entorno abierto, perfecto para enlazar con Gazala.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page3_img2.jpeg" alt="Tropas y vehículo italiano durante la campaña africana">
-          <figcaption>Presencia italiana y movilidad mecanizada en los escenarios del centro de campaña.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page4_img1.jpeg" alt="Columna de soldados avanzando por una carretera entre lomas">
-          <figcaption>Marcha por terreno quebrado, muy adecuada para el paso de Kasserine.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page4_img2.jpeg" alt="Soldados tras un parapeto rocoso durante el combate">
-          <figcaption>Combate a cubierto y presión defensiva en posiciones avanzadas.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page5_img1.jpeg" alt="Carro Tigre en la campaña tunecina">
-          <figcaption>Potencia blindada alemana en la fase final de la campaña tunecina.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page5_img2.jpeg" alt="Soldados e infantería junto a vehículos en terreno embarrado y abierto">
-          <figcaption>Escena de avance en la última fase de la guerra en África.</figcaption>
-        </figure>
-        <figure class="photo">
-          <img src="img/page6_img1.jpeg" alt="Entrada de carros en una ciudad norteafricana">
-          <figcaption>Entrada en zona urbana, ideal para ilustrar la ofensiva final sobre Túnez.</figcaption>
-        </figure>
+        <a class="photo-link" href="img/page1_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page1_img1.jpeg" alt="Mandos del Eje y Aliados en la campaña del Norte de África">
+            <figcaption>Imagen principal del dossier, reutilizada como pieza central de la portada.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page2_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page2_img1.jpeg" alt="Explosión en el desierto durante los combates del Norte de África">
+            <figcaption>Bombardeo y paisaje abierto del desierto, útil para ambientar Tobruk y Gazala.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page2_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page2_img2.jpeg" alt="Infantería observando desde una posición rocosa en el desierto">
+            <figcaption>Observación y fuego desde posiciones avanzadas en terreno árido y descubierto.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page3_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page3_img1.jpeg" alt="Vehículo blindado en terreno desértico">
+            <figcaption>Reconocimiento blindado en un entorno abierto, perfecto para enlazar con Gazala.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page3_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page3_img2.jpeg" alt="Tropas y vehículo italiano durante la campaña africana">
+            <figcaption>Presencia italiana y movilidad mecanizada en los escenarios del centro de campaña.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page4_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page4_img1.jpeg" alt="Columna de soldados avanzando por una carretera entre lomas">
+            <figcaption>Marcha por terreno quebrado, muy adecuada para el paso de Kasserine.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page4_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page4_img2.jpeg" alt="Soldados tras un parapeto rocoso durante el combate">
+            <figcaption>Combate a cubierto y presión defensiva en posiciones avanzadas.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page5_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page5_img1.jpeg" alt="Carro Tigre en la campaña tunecina">
+            <figcaption>Potencia blindada alemana en la fase final de la campaña tunecina.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page5_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page5_img2.jpeg" alt="Soldados e infantería junto a vehículos en terreno embarrado y abierto">
+            <figcaption>Escena de avance en la última fase de la guerra en África.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page6_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page6_img1.jpeg" alt="Entrada de carros en una ciudad norteafricana">
+            <figcaption>Entrada en zona urbana, ideal para ilustrar la ofensiva final sobre Túnez.</figcaption>
+          </figure>
+        </a>
       </div>
     </section>
 
