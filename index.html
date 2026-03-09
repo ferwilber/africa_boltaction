@@ -77,27 +77,13 @@
 
     .brand-logo {
       display: block;
-      width: 280px;
+      width: 240px;
       max-width: 100%;
       height: auto;
       filter: drop-shadow(0 3px 8px rgba(0,0,0,0.28));
     }
 
-    .nav {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .nav a {
-      color: #eadfca;
-      text-decoration: none;
-      font-size: 0.9rem;
-      padding: 6px 8px;
-      border-bottom: 1px solid transparent;
-    }
-
-    .nav a:hover { border-color: #eadfca; }
+    
 
     .hero {
       max-width: 1260px;
@@ -142,61 +128,27 @@
       padding: 42px;
       position: relative;
       z-index: 1;
-    }
-
-    .eyebrow {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--olive);
-      margin-bottom: 12px;
-      font-weight: bold;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      line-height: 0.94;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .subtitle {
-      max-width: 64ch;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      margin: 20px 0 26px;
-      color: var(--ink-soft);
-    }
-
-    .cta-row {
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.84rem;
-      border: 1px solid var(--ink);
-      color: var(--ink);
-      background: rgba(255,255,255,0.18);
-      transition: transform 0.2s ease, background 0.2s ease;
+    .hero-logo-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.36);
+    .hero-logo {
+      width: min(420px, 100%);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.18));
     }
 
-    .btn.primary {
-      background: var(--ink);
-      color: var(--paper);
-    }
+    
 
     .hero-side {
       min-height: 500px;
@@ -222,18 +174,7 @@
       filter: grayscale(1) sepia(0.35) contrast(1.04) saturate(0.8);
     }
 
-    .map-tag {
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      max-width: 320px;
-      background: rgba(234,217,182,0.92);
-      border: 1px solid var(--line);
-      padding: 10px 12px;
-      font-size: 0.82rem;
-      line-height: 1.55;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
-    }
+    
 
     main {
       max-width: 1260px;
@@ -355,6 +296,14 @@
       border: 1px solid var(--line);
       padding: 18px;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14);
+    }
+
+    .map-image {
+      width: 100%;
+      display: block;
+      border: 1px solid rgba(43,33,21,0.2);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.16);
     }
 
     .map-legend {
@@ -520,151 +469,33 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="index.html" aria-label="Ir a la página principal de Duelo en la Arena">
-        <svg class="brand-logo" viewBox="0 0 520 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Duelo en la Arena">
-          <defs>
-            <linearGradient id="logoBg" x1="0" x2="1">
-              <stop offset="0%" stop-color="#ead9b6"/>
-              <stop offset="100%" stop-color="#cfb07a"/>
-            </linearGradient>
-          </defs>
-          <rect x="2" y="8" width="516" height="104" rx="4" fill="url(#logoBg)" stroke="#7a2f21" stroke-width="3"/>
-          <path d="M22 60 H112" stroke="#7a2f21" stroke-width="3" stroke-dasharray="10 8"/>
-          <path d="M408 60 H498" stroke="#7a2f21" stroke-width="3" stroke-dasharray="10 8"/>
-          <text x="260" y="46" text-anchor="middle" fill="#2b2115" font-size="44" font-weight="900" letter-spacing="4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">DUELO</text>
-          <text x="260" y="70" text-anchor="middle" fill="#7a2f21" font-size="18" font-weight="700" letter-spacing="6" style="font-family: Georgia, serif;">EN LA</text>
-          <text x="260" y="104" text-anchor="middle" fill="#2b2115" font-size="56" font-weight="900" letter-spacing="3" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">ARENA</text>
-        </svg>
+        <img class="brand-logo" src="img/logo.png" alt="Duelo en la Arena">
       </a>
-      <nav class="nav">
-        <a href="#campana">Campaña</a>
-        <a href="#mapa">Mapa</a>
-        <a href="#escenarios">Escenarios</a>
-        <a href="#galeria">Galería</a>
-        <a href="#archivo">Archivo</a>
-      </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="file-stamp">Expediente de campaña · Norte de África · 1941–1943</div>
+    
     <div class="hero-card">
       <div class="hero-copy">
-        <div class="eyebrow">Campaña narrativa para Bolt Action</div>
-        <h1>Duelo en la Arena</h1>
-        <p class="subtitle">
-          La campaña sigue el pulso de la guerra en el desierto desde Tobruk hasta Túnez.
-        </p>
-        <div class="cta-row">
-          <a class="btn primary" href="#escenarios">Ver operaciones</a>
-          <a class="btn" href="#galeria">Ver galería</a>
+        <div class="hero-logo-wrap">
+          <img class="hero-logo" src="img/logo.png" alt="Logo de Duelo en la Arena">
         </div>
       </div>
       <div class="hero-side">
         <img class="hero-image" src="img/hero-principal.jpg" alt="Mandos del Eje y Aliados en la campaña del Norte de África">
-        <div class="map-tag">
-          <strong>Imagen principal:</strong><br>
-          Mando aliado y del Eje en el teatro norteafricano.<br>
-          <span class="smallcaps">Estética de cartel y archivo militar</span>
-        </div>
       </div>
     </div>
   </section>
 
   <main>
-    <section class="section" id="campana">
-      <h2 class="section-title">Resumen de campaña</h2>
-      <div class="grid-2">
-        <article class="card">
-          <h3>Estructura</h3>
-          <p>
-            La web queda organizada en cinco partidas enlazadas: Tobruk, Gazala, Torch, Kasserine y la batalla final por Túnez.
-            El conjunto mantiene continuidad histórica y reparte protagonismo entre Reino Unido, Italia, Estados Unidos y el Afrika Korps.
-          </p>
-        </article>
-        <article class="card">
-          <h3>Lenguaje visual</h3>
-          <p>
-            El aspecto general se apoya en tonos de arena, papel envejecido, imágenes en blanco y negro del PDF y un mapa apaisado con aire de mapa operacional de la Segunda Guerra Mundial.
-          </p>
-        </article>
-      </div>
-    </section>
-
     <section class="section" id="mapa">
       <h2 class="section-title">Mapa operacional del Norte de África</h2>
       <div class="map-wrap">
-        <svg viewBox="0 0 1200 420" width="100%" role="img" aria-label="Mapa militar estilizado del norte de África para la campaña">
-          <defs>
-            <filter id="paperNoise">
-              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
-              <feColorMatrix type="saturate" values="0"/>
-              <feComponentTransfer>
-                <feFuncA type="table" tableValues="0 0.05"/>
-              </feComponentTransfer>
-            </filter>
-            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L8,3 L0,6 z" fill="#2b2115"></path>
-            </marker>
-          </defs>
-
-          <rect x="0" y="0" width="1200" height="420" fill="#d9bd86"></rect>
-          <rect x="0" y="0" width="1200" height="420" filter="url(#paperNoise)"></rect>
-
-          <g opacity="0.22" stroke="#7d6848" stroke-width="1">
-            <path d="M0 70 H1200"></path><path d="M0 140 H1200"></path><path d="M0 210 H1200"></path><path d="M0 280 H1200"></path><path d="M0 350 H1200"></path>
-            <path d="M100 0 V420"></path><path d="M200 0 V420"></path><path d="M300 0 V420"></path><path d="M400 0 V420"></path><path d="M500 0 V420"></path><path d="M600 0 V420"></path><path d="M700 0 V420"></path><path d="M800 0 V420"></path><path d="M900 0 V420"></path><path d="M1000 0 V420"></path><path d="M1100 0 V420"></path>
-          </g>
-
-          <path d="M40 280 C95 265, 130 250, 180 222 C220 200, 260 176, 322 165 C392 153, 430 155, 505 165 C565 173, 625 188, 672 205 C718 221, 775 246, 832 258 C882 268, 925 274, 970 278 C1038 284, 1100 281, 1165 290 L1165 420 L40 420 Z"
-                fill="#b58f57" opacity="0.92" stroke="#4f3d25" stroke-width="3"></path>
-
-          <path d="M78 221 C144 192, 214 171, 289 156 C371 139, 468 136, 544 148 C648 163, 719 192, 800 224 C894 260, 980 258, 1128 276"
-                fill="none" stroke="#2b2115" stroke-width="4" stroke-dasharray="10 7"></path>
-
-          <g fill="#7a2f21" stroke="#2b2115" stroke-width="1.5">
-            <circle cx="1020" cy="245" r="7"></circle>
-            <circle cx="965" cy="240" r="6"></circle>
-            <circle cx="905" cy="236" r="6"></circle>
-            <circle cx="760" cy="226" r="6"></circle>
-            <circle cx="655" cy="210" r="6"></circle>
-            <circle cx="580" cy="195" r="6"></circle>
-            <circle cx="455" cy="176" r="6"></circle>
-            <circle cx="288" cy="158" r="6"></circle>
-            <circle cx="165" cy="186" r="6"></circle>
-          </g>
-
-          <g font-family="Georgia, serif" font-size="22" fill="#2b2115" font-weight="700">
-            <text x="1036" y="250">Alexandria</text>
-            <text x="980" y="220">El Alamein</text>
-            <text x="915" y="218">Tobruk</text>
-            <text x="770" y="214">Gazala</text>
-            <text x="667" y="194">Bengasi</text>
-            <text x="525" y="182">Mersa Brega</text>
-            <text x="405" y="162">Trípoli</text>
-            <text x="215" y="145">Kasserine</text>
-            <text x="104" y="173">Túnez</text>
-          </g>
-
-          <g stroke="#2b2115" stroke-width="3" fill="none" marker-end="url(#arrow)">
-            <path d="M95 110 C165 108, 210 126, 275 145"></path>
-            <path d="M930 120 C860 142, 805 176, 775 214"></path>
-            <path d="M730 122 C690 144, 666 164, 660 198"></path>
-            <path d="M390 118 C345 124, 310 136, 288 152"></path>
-          </g>
-
-          <g font-family="Georgia, serif" font-size="18" fill="#2b2115" font-style="italic">
-            <text x="44" y="105">Torch</text>
-            <text x="918" y="112">Tobruk</text>
-            <text x="706" y="110">Gazala</text>
-            <text x="350" y="108">Kasserine</text>
-          </g>
-
-          <text x="36" y="42" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#2b2115" letter-spacing="2">NORTE DE ÁFRICA · MAPA OPERACIONAL</text>
-          <text x="36" y="72" font-family="Georgia, serif" font-size="16" fill="#5a4931">Teatro mediterráneo occidental · campaña narrativa de Bolt Action</text>
-        </svg>
+        <img class="map-image" src="img/mapa.jpg" alt="Mapa del Norte de África con estética militar de la Segunda Guerra Mundial">
         <div class="map-legend">
-          <div class="legend-item"><span class="dot"></span><span>Objetivos y ciudades clave</span></div>
-          <div class="legend-item"><span class="line-demo"></span><span>Eje de campaña y movimientos operacionales</span></div>
+          <div class="legend-item"><span class="dot"></span><span>Mapa principal de campaña</span></div>
+          <div class="legend-item"><span class="line-demo"></span><span>Ruta visual del teatro de operaciones</span></div>
         </div>
       </div>
     </section>
