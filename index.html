@@ -77,7 +77,7 @@
 
     .brand-logo {
       display: block;
-      width: 240px;
+      width: 170px;
       max-width: 100%;
       height: auto;
       filter: drop-shadow(0 3px 8px rgba(0,0,0,0.28));
@@ -130,20 +130,21 @@
       z-index: 1;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .hero-logo-wrap {
       width: 100%;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
-      padding: 0 0 18px;
+      padding: 18px 0 0;
     }
 
     .hero-logo {
-      width: min(360px, 100%);
+      width: min(320px, 100%);
       height: auto;
       display: block;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.18));
@@ -523,7 +524,11 @@
       .gallery-grid { grid-template-columns: 1fr; }
 
       .brand-logo {
-        width: 220px;
+        width: 145px;
+      }
+
+      .hero-logo {
+        width: min(260px, 100%);
       }
     }
   </style>
@@ -541,14 +546,14 @@
     
     <div class="hero-card">
       <div class="hero-copy">
-        <div class="hero-logo-wrap">
-          <img class="hero-logo" src="img/logo.png" alt="Logo de Duelo en la Arena">
-        </div>
         <div class="eyebrow">Campaña narrativa para Bolt Action</div>
         <h1>Duelo en la Arena</h1>
         <p class="subtitle">
           La campaña sigue el pulso de la guerra en el desierto desde Tobruk hasta Túnez.
         </p>
+        <div class="hero-logo-wrap">
+          <img class="hero-logo" src="img/logo.png" alt="Logo de Duelo en la Arena">
+        </div>
         <div class="cta-row">
           <a class="btn primary" href="#escenarios">Ver operaciones</a>
           <a class="btn" href="#galeria">Ver galería</a>
