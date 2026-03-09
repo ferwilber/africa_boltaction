@@ -129,23 +129,78 @@
       position: relative;
       z-index: 1;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: center;
     }
 
     .hero-logo-wrap {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      padding: 10px 0;
+      padding: 0 0 18px;
     }
 
     .hero-logo {
-      width: min(420px, 100%);
+      width: min(360px, 100%);
       height: auto;
       display: block;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.18));
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--olive);
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 0.94;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .subtitle {
+      max-width: 64ch;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      margin: 20px 0 26px;
+      color: var(--ink-soft);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.84rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: rgba(255,255,255,0.18);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.36);
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: var(--paper);
     }
 
     
@@ -452,7 +507,15 @@
         border-top: 1px solid var(--line);
       }
 
-      .hero-copy { padding: 28px; }
+      .hero-copy {
+        padding: 28px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-logo-wrap {
+        justify-content: center;
+      }
     }
 
     @media (max-width: 700px) {
@@ -480,6 +543,15 @@
       <div class="hero-copy">
         <div class="hero-logo-wrap">
           <img class="hero-logo" src="img/logo.png" alt="Logo de Duelo en la Arena">
+        </div>
+        <div class="eyebrow">Campaña narrativa para Bolt Action</div>
+        <h1>Duelo en la Arena</h1>
+        <p class="subtitle">
+          La campaña sigue el pulso de la guerra en el desierto desde Tobruk hasta Túnez.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#escenarios">Ver operaciones</a>
+          <a class="btn" href="#galeria">Ver galería</a>
         </div>
       </div>
       <div class="hero-side">
