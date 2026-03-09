@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duelo en la Arena</title>
+  <style>
+    :root {
+      --sand: #d8c7a1;
+      --paper: #e8dcc2;
+      --paper-dark: #cdbf9f;
+      --ink: #2f281e;
+      --red: #7a2f21;
+      --olive: #5f6342;
+      --line: rgba(47, 40, 30, 0.25);
+      --shadow: rgba(0, 0, 0, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 30%),
+        linear-gradient(rgba(216,199,161,0.94), rgba(201,183,144,0.94)),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 1px, transparent 1px, transparent 3px);
+      min-height: 100vh;
+      letter-spacing: 0.02em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05), transparent 18%),
+        radial-gradient(circle at 80% 20%, rgba(0,0,0,0.06), transparent 18%),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04), transparent 20%);
+      mix-blend-mode: multiply;
+      opacity: 0.8;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(6px);
+      background: rgba(47, 40, 30, 0.88);
+      border-bottom: 1px solid rgba(232,220,194,0.2);
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: #f2e7cf;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #eadfca;
+      text-decoration: none;
+      font-size: 0.92rem;
+      padding: 6px 8px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav a:hover { border-color: #eadfca; }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 44px 20px 24px;
+    }
+
+    .file-stamp {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border: 2px solid var(--red);
+      color: var(--red);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      transform: rotate(-2deg);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .hero-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      background: linear-gradient(rgba(232,220,194,0.92), rgba(223,210,180,0.94));
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 40px var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(transparent 95%, rgba(47,40,30,0.06) 100%),
+        repeating-linear-gradient(90deg, rgba(47,40,30,0.03), rgba(47,40,30,0.03) 1px, transparent 1px, transparent 110px);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--olive);
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .subtitle {
+      max-width: 62ch;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin: 20px 0 26px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: rgba(255,255,255,0.18);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.35);
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .hero-side {
+      position: relative;
+      min-height: 420px;
+      background:
+        linear-gradient(rgba(47,40,30,0.28), rgba(47,40,30,0.18)),
+        url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border-left: 1px solid var(--line);
+    }
+
+    .map-tag {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      background: rgba(232,220,194,0.9);
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      width: min(300px, calc(100% - 36px));
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8px 20px 60px;
+    }
+
+    .section {
+      margin-top: 28px;
+      background: rgba(232,220,194,0.84);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      padding: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid var(--line);
+      padding: 20px;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px dashed rgba(47,40,30,0.12);
+      pointer-events: none;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .scenario-card {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid var(--line);
+      padding: 16px;
+      min-height: 240px;
+      position: relative;
+    }
+
+    .scenario-number {
+      display: inline-block;
+      border: 1px solid var(--red);
+      color: var(--red);
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .scenario-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .meta {
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--olive);
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .timeline { display: grid; gap: 14px; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .timeline-item:first-child { border-top: none; padding-top: 0; }
+
+    .timeline-date {
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--red);
+    }
+
+    .archive-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+    .archive-box {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid var(--line);
+      padding: 18px;
+      min-height: 200px;
+    }
+
+    .archive-box ul { margin: 12px 0 0 18px; padding: 0; }
+
+    p, li { line-height: 1.7; font-size: 0.98rem; }
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    .footer-card {
+      background: rgba(47,40,30,0.9);
+      color: #eadfca;
+      padding: 20px 24px;
+      border: 1px solid rgba(232,220,194,0.15);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .smallcaps { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.82rem; }
+
+    @media (max-width: 1100px) {
+      .scenario-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-card, .archive-panel, .grid-2, .grid-3, .timeline-item { grid-template-columns: 1fr; }
+      .hero-side { min-height: 260px; border-left: none; border-top: 1px solid var(--line); }
+      .hero-copy { padding: 28px; }
+      .timeline-date { margin-bottom: -8px; }
+    }
+
+    @media (max-width: 700px) {
+      .scenario-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Duelo en la Arena</div>
+      <nav class="nav">
+        <a href="#campana">Campaña</a>
+        <a href="#participacion">Participación</a>
+        <a href="#escenarios">Escenarios</a>
+        <a href="#cronologia">Cronología</a>
+        <a href="#archivo">Archivo</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="file-stamp">Expediente de campaña · Norte de África · 1941–1943</div>
+    <div class="hero-card">
+      <div class="hero-copy">
+        <div class="eyebrow">Campaña narrativa para Bolt Action</div>
+        <h1>Duelo en la Arena</h1>
+        <p class="subtitle">
+          La campaña queda estructurada en cinco enfrentamientos enlazados: Tobruk, Gazala, Torch,
+          Kasserine y la batalla final por Túnez. Cada nación participa dos veces antes del desenlace,
+          y la guerra avanza desde la resistencia aliada en Tobruk hasta el colapso final del Eje en África.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#escenarios">Ver operaciones</a>
+          <a class="btn" href="#cronologia">Seguir campaña</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="map-tag">
+          <strong>Ruta de la campaña:</strong><br>
+          Tobruk · Gazala · Torch · Kasserine · Túnez<br>
+          <span class="smallcaps">Documento operacional activo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="campana">
+      <h2 class="section-title">Resumen de campaña</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Estructura</h3>
+          <p>
+            La web se basa en una campaña de cinco partidas ambientada entre 1941 y 1943. El recorrido parte del
+            perímetro de Tobruk, pasa por Gazala, la carrera hacia Túnez tras Torch y el contraataque del Afrika Korps
+            en Kasserine, para terminar con la caída de Túnez.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Final de campaña</h3>
+          <p>
+            La quinta partida es una final a cuatro: USA + Reino Unido contra DAK + Italia. El objetivo es capturar
+            tres objetivos estratégicos en un entorno de periferia urbana, carreteras y colinas exteriores.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="participacion">
+      <h2 class="section-title">Participación de jugadores</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Naciones y partidas</h3>
+          <ul>
+            <li><strong>Reino Unido:</strong> Tobruk y Gazala</li>
+            <li><strong>DAK:</strong> Gazala y Kasserine</li>
+            <li><strong>Italia:</strong> Tobruk y Torch</li>
+            <li><strong>USA:</strong> Torch y Kasserine</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Regla de participación</h3>
+          <p>
+            Todos los jugadores participan dos veces antes de la final. Eso deja una progresión bastante limpia,
+            reparte protagonismo y hace que la última batalla de Túnez tenga sentido como cierre narrativo.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="escenarios">
+      <h2 class="section-title">Operaciones de campaña</h2>
+      <div class="scenario-grid">
+        <article class="scenario-card">
+          <div class="scenario-number">Operación 1</div>
+          <h3>Tobruk — El perímetro resiste</h3>
+          <div class="meta">Abril 1941 · Reino Unido vs Italia</div>
+          <p>La guarnición aliada defiende el perímetro fortificado de Tobruk frente a ataques italianos.</p>
+          <p><strong>Terreno:</strong> fortificaciones, trincheras, alambradas y desierto abierto.</p>
+          <p><strong>Objetivo:</strong> Italia debe romper el perímetro.</p>
+        </article>
+
+        <article class="scenario-card">
+          <div class="scenario-number">Operación 2</div>
+          <h3>Gazala — Maniobra de Rommel</h3>
+          <div class="meta">Junio 1942 · Reino Unido vs DAK</div>
+          <p>Rommel lanza su ofensiva envolvente contra el frente británico.</p>
+          <p><strong>Terreno:</strong> desierto abierto, campos de minas y posiciones de artillería.</p>
+          <p><strong>Objetivo:</strong> controlar depósitos de suministros.</p>
+        </article>
+
+        <article class="scenario-card">
+          <div class="scenario-number">Operación 3</div>
+          <h3>Torch — Carrera hacia Túnez</h3>
+          <div class="meta">Diciembre 1942 · USA vs Italia</div>
+          <p>Tras Torch, los aliados avanzan desde Argelia hacia Túnez y chocan con tropas italianas en el sector sur.</p>
+          <p><strong>Terreno:</strong> pueblo u oasis, carretera principal, colinas bajas y olivares o terreno semidesértico.</p>
+          <p><strong>Objetivo:</strong> capturar el pueblo o cruce estratégico.</p>
+        </article>
+
+        <article class="scenario-card">
+          <div class="scenario-number">Operación 4</div>
+          <h3>Kasserine — Contraataque del Afrika Korps</h3>
+          <div class="meta">Febrero 1943 · USA vs DAK</div>
+          <p>El Afrika Korps lanza un contraataque contra fuerzas estadounidenses en el interior de Túnez.</p>
+          <p><strong>Terreno:</strong> paso montañoso, carretera y colinas rocosas.</p>
+          <p><strong>Objetivo:</strong> controlar el paso.</p>
+        </article>
+
+        <article class="scenario-card">
+          <div class="scenario-number">Final</div>
+          <h3>Túnez — Caída del Eje en África</h3>
+          <div class="meta">Mayo 1943 · USA + Reino Unido vs DAK + Italia</div>
+          <p>Ofensiva final aliada para tomar Túnez y cerrar la campaña africana.</p>
+          <p><strong>Terreno:</strong> periferia urbana, carreteras y colinas exteriores.</p>
+          <p><strong>Objetivo:</strong> capturar 3 objetivos estratégicos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="cronologia">
+      <h2 class="section-title">Narrativa cronológica</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Abril 1941</div>
+          <div><p><strong>Tobruk.</strong> Resistencia aliada y defensa del perímetro fortificado frente a ataques italianos.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Junio 1942</div>
+          <div><p><strong>Gazala.</strong> Rommel intenta desbordar el frente británico y romper el equilibrio operacional.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Diciembre 1942</div>
+          <div><p><strong>Torch.</strong> La entrada efectiva de Estados Unidos en el frente norteafricano abre la carrera hacia Túnez.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Febrero 1943</div>
+          <div><p><strong>Kasserine.</strong> El Afrika Korps golpea a las fuerzas estadounidenses en un terreno duro y encajonado.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Mayo 1943</div>
+          <div><p><strong>Túnez.</strong> La ofensiva final aliada cierra la campaña con una batalla conjunta a cuatro bandas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="archivo">
+      <h2 class="section-title">Archivo de campaña</h2>
+      <div class="archive-panel">
+        <div class="archive-box">
+          <h3>Contenido previsto</h3>
+          <ul>
+            <li>Una página por escenario</li>
+            <li>Mapa general de la campaña</li>
+            <li>Briefing histórico y objetivo de cada batalla</li>
+            <li>Registro de resultados y ganador de campaña</li>
+            <li>Galería de fotos de las partidas</li>
+          </ul>
+        </div>
+        <div class="archive-box">
+          <h3>Sugerencia de expansión</h3>
+          <p>
+            Lo lógico ahora es convertir cada operación en una subpágina: <em>tobruk.html</em>, <em>gazala.html</em>,
+            <em>torch.html</em>, <em>kasserine.html</em> y <em>tunez.html</em>. Así la home queda limpia y cada batalla
+            puede tener su propio mapa, despliegue, reglas especiales y parte posterior.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-card">
+      <div>
+        <div class="smallcaps">Duelo en la Arena</div>
+        <div>Dossier interactivo de campaña · Bolt Action · Norte de África</div>
+      </div>
+      <div>
+        <div class="smallcaps">Estado del expediente</div>
+        <div>Base operativa definida</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
