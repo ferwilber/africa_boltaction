@@ -329,10 +329,12 @@
     .gallery-section,
     .archive-section {
       margin-top: 28px;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      padding: 22px 0;
+      background:
+        linear-gradient(rgba(233,214,181,0.78), rgba(211,180,130,0.78)),
+        url('img/background.png') center center / cover no-repeat;
+      border: 1px solid rgba(38,25,15,0.14);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      padding: 22px;
       position: relative;
       overflow: visible;
     }
@@ -587,18 +589,12 @@
           <img src="img/mapa.jpg" alt="Mapa operacional del Norte de África" />
         </section>
 
-        <section class="button-row">
-          <a class="poster-btn" href="#mapa"><span class="btn-icon">🧭</span><span>Cronología</span></a>
-          <a class="poster-btn primary" href="#escenarios"><span class="btn-icon">🪖</span><span>Escenarios</span></a>
-          <a class="poster-btn" href="tobruk.html"><span class="btn-icon">📜</span><span>Reglas</span></a>
-          <a class="poster-btn" href="#galeria"><span class="btn-icon">📸</span><span>Resultados</span></a>
-          <a class="poster-btn" href="#archivo"><span class="btn-icon">🗂️</span><span>Archivo</span></a>
-        </section>
+        
       </div>
     </section>
 
     <section class="gallery-section" id="galeria">
-      <h2 class="section-title">Galería del dossier</h2>
+      <h2 class="section-title">Dossier</h2>
       <div class="gallery-grid">
         <a class="photo-link" href="img/page1_img1.jpeg" target="_blank" rel="noopener noreferrer">
           <figure class="photo">
