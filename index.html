@@ -93,3 +93,715 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       line-height: 0.95;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.22);
+      white-space: nowrap;
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 18px 20px 42px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .poster {
+      background:
+        linear-gradient(rgba(236,216,178,0.55), rgba(206,166,113,0.4)),
+        url('img/mapa.jpg') center 38% / cover no-repeat;
+      border: 1px solid rgba(38,25,15,0.2);
+      box-shadow: 0 20px 50px var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 14%, rgba(255,255,255,0.20), transparent 18%),
+        radial-gradient(circle at 80% 24%, rgba(255,255,255,0.08), transparent 20%),
+        linear-gradient(180deg, rgba(241,224,192,0.58) 0%, rgba(215,180,126,0.34) 40%, rgba(150,107,61,0.22) 100%);
+      pointer-events: none;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.06), transparent 8%, transparent 92%, rgba(0,0,0,0.07)),
+        linear-gradient(180deg, rgba(0,0,0,0.08), transparent 10%, transparent 92%, rgba(0,0,0,0.10));
+      mix-blend-mode: multiply;
+    }
+
+    .poster-inner {
+      position: relative;
+      z-index: 1;
+      padding: 24px 24px 28px;
+    }
+
+    .poster-top {
+      display: grid;
+      grid-template-columns: 0.98fr 1.02fr;
+      gap: 18px;
+      align-items: end;
+      min-height: 520px;
+    }
+
+    .title-block {
+      align-self: start;
+      padding: 4px 6px 0;
+    }
+
+    .kicker {
+      margin: 0 0 16px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .poster-title {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(4rem, 9vw, 7.6rem);
+      line-height: 0.84;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #24170e;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.08);
+    }
+
+    .poster-title .accent {
+      color: var(--red);
+      font-size: 0.62em;
+      vertical-align: top;
+      margin: 0 0.14em;
+    }
+
+    .subheading {
+      margin: 18px 0 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.55rem, 3vw, 2.9rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .top-secret {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: var(--red);
+      border: 3px solid rgba(142,50,35,0.7);
+      padding: 8px 16px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 2rem;
+      transform: rotate(-4deg);
+      opacity: 0.85;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-collage {
+      position: relative;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      min-height: 100%;
+      padding: 0 6px;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-height: 510px;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+      filter: grayscale(1) sepia(0.38) contrast(1.04) saturate(0.85) drop-shadow(0 16px 18px rgba(0,0,0,0.18));
+    }
+
+    .map-panel {
+      margin-top: -20px;
+      position: relative;
+      background: rgba(218,190,142,0.58);
+      border: 1px solid rgba(38,25,15,0.16);
+      box-shadow: 0 18px 28px rgba(0,0,0,0.12);
+      backdrop-filter: blur(1px);
+      overflow: hidden;
+    }
+
+    .map-panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+      opacity: 0.96;
+    }
+
+    .section-labels {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      margin-top: -6px;
+      align-items: start;
+    }
+
+    .scenario-paper {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: linear-gradient(180deg, rgba(241,227,201,0.95), rgba(221,194,148,0.95));
+      border: 1px solid rgba(85,57,36,0.18);
+      box-shadow: 0 14px 24px rgba(0,0,0,0.12);
+      padding: 12px 12px 14px;
+      position: relative;
+      transform-origin: top center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 368px;
+    }
+
+    .scenario-paper:nth-child(1) { transform: rotate(-1.2deg); }
+    .scenario-paper:nth-child(2) { transform: rotate(0.8deg); }
+    .scenario-paper:nth-child(3) { transform: rotate(-0.6deg); }
+    .scenario-paper:nth-child(4) { transform: rotate(0.9deg); }
+    .scenario-paper:nth-child(5) { transform: rotate(-1deg); }
+
+    .scenario-paper:hover {
+      transform: translateY(-6px) rotate(0deg);
+      box-shadow: 0 20px 32px rgba(0,0,0,0.18);
+    }
+
+    .paper-pin {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #7f5a34;
+      position: absolute;
+      left: calc(50% - 6px);
+      top: 10px;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.28), 0 1px 3px rgba(0,0,0,0.26);
+    }
+
+    .paper-head {
+      padding-top: 18px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .paper-title {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(2.1rem, 3vw, 3rem);
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--red);
+    }
+
+    .paper-date {
+      margin: 8px 0 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.2rem, 2.2vw, 2rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .paper-versus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+      min-height: 42px;
+    }
+
+    .flag {
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .paper-image {
+      aspect-ratio: 1.25 / 0.7;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.16);
+      background: rgba(255,255,255,0.2);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+
+    .paper-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(1) sepia(0.35) contrast(1.02);
+      transition: transform 0.25s ease;
+    }
+
+    .scenario-paper:hover .paper-image img {
+      transform: scale(1.05);
+    }
+
+    .paper-note {
+      margin: 12px 0 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .poster-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 72px;
+      text-decoration: none;
+      color: var(--ink);
+      background: linear-gradient(180deg, rgba(224,194,145,0.98), rgba(198,157,102,0.98));
+      border: 1px solid rgba(55,36,20,0.18);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.25rem, 2vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 8px 10px;
+    }
+
+    .poster-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 24px rgba(0,0,0,0.16);
+    }
+
+    .poster-btn.primary {
+      background: linear-gradient(180deg, rgba(80,52,30,0.98), rgba(46,29,17,0.98));
+      color: #eadfca;
+    }
+
+    .btn-icon {
+      font-size: 1.1em;
+      line-height: 1;
+    }
+
+    .gallery-section,
+    .archive-section {
+      margin-top: 28px;
+      background: rgba(233,214,181,0.86);
+      border: 1px solid rgba(38,25,15,0.18);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.1);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-section::before,
+    .archive-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(90deg, rgba(38,25,15,0.015), rgba(38,25,15,0.015) 1px, transparent 1px, transparent 120px);
+      opacity: 0.45;
+    }
+
+    .gallery-section > *,
+    .archive-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .photo-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .photo {
+      height: 100%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(38,25,15,0.15);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .photo-link:hover .photo {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 24px rgba(0,0,0,0.14);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(1) sepia(0.35) contrast(1.02);
+    }
+
+    .photo figcaption {
+      margin: 0;
+      padding: 10px 12px 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      background: rgba(236,223,198,0.88);
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .archive-box {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(38,25,15,0.15);
+      padding: 18px;
+      min-height: 180px;
+    }
+
+    .archive-box h3 {
+      margin: 0 0 12px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 1.55rem;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    .archive-box ul {
+      margin: 12px 0 0 18px;
+      padding: 0;
+    }
+
+    .archive-box p,
+    .archive-box li {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    footer {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px 36px;
+    }
+
+    .footer-card {
+      background: rgba(43,33,21,0.92);
+      color: #eadfca;
+      border: 1px solid rgba(234,217,182,0.15);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.14);
+    }
+
+    .smallcaps {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 1200px) {
+      .section-labels,
+      .button-row,
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .poster-top {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .hero-collage {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner {
+        padding: 8px 14px;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 72px;
+      }
+
+      .topbar-title {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        white-space: normal;
+      }
+
+      .poster-inner {
+        padding: 18px 16px 22px;
+      }
+
+      .poster-title {
+        font-size: clamp(3rem, 16vw, 5.2rem);
+      }
+
+      .subheading {
+        font-size: 1.5rem;
+      }
+
+      .top-secret {
+        font-size: 1.25rem;
+        padding: 6px 10px;
+        right: 14px;
+        top: 14px;
+      }
+
+      .section-labels,
+      .button-row,
+      .gallery-grid,
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scenario-paper {
+        min-height: 0;
+      }
+
+      .photo img {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Ir a la página principal de Duelo en la Arena">
+        <img class="brand-logo" src="img/logo.png" alt="Duelo en la Arena" />
+      </a>
+      <a class="topbar-title" href="index.html">Duelo en la Arena</a>
+    </div>
+  </header>
+
+  <div class="page">
+    <section class="poster">
+      <div class="top-secret">Top Secret</div>
+      <div class="poster-inner">
+        <div class="poster-top">
+          <div class="title-block">
+            <p class="kicker">Campaña narrativa para Bolt Action</p>
+            <h1 class="poster-title">DUELO <span class="accent">EN LA</span><br />ARENA</h1>
+            <div class="subheading">Campaña Bolt Action – Norte de África (1941–1943)</div>
+          </div>
+          <div class="hero-collage">
+            <img class="hero-image" src="img/hero-principal.jpg" alt="Mandos del Eje y Aliados en la campaña del Norte de África" />
+          </div>
+        </div>
+
+        <section class="map-panel" id="mapa">
+          <img src="img/mapa.jpg" alt="Mapa operacional del Norte de África" />
+        </section>
+
+        <section class="section-labels" id="escenarios">
+          <a class="scenario-paper" href="tobruk.html">
+            <span class="paper-pin"></span>
+            <div class="paper-head">
+              <h2 class="paper-title">Tobruk</h2>
+              <div class="paper-date">Abril · 1941</div>
+            </div>
+            <div class="paper-versus"><span class="flag">🇬🇧</span> UK vs <span style="color:var(--red-soft)">Italia</span></div>
+            <div class="paper-image"><img src="img/page2_img1.jpeg" alt="Escenario Tobruk" /></div>
+            <p class="paper-note">Perímetro fortificado, fuego cruzado y resistencia aliada frente a la presión italiana.</p>
+          </a>
+
+          <a class="scenario-paper" href="gazala.html">
+            <span class="paper-pin"></span>
+            <div class="paper-head">
+              <h2 class="paper-title">Gazala</h2>
+              <div class="paper-date">Junio · 1942</div>
+            </div>
+            <div class="paper-versus"><span class="flag">🇬🇧</span> UK vs DAK</div>
+            <div class="paper-image"><img src="img/page3_img1.jpeg" alt="Escenario Gazala" /></div>
+            <p class="paper-note">Maniobra envolvente, minas y guerra móvil en el gran desierto de Cirenaica.</p>
+          </a>
+
+          <a class="scenario-paper" href="torch.html">
+            <span class="paper-pin"></span>
+            <div class="paper-head">
+              <h2 class="paper-title">Torch</h2>
+              <div class="paper-date">Diciembre · 1942</div>
+            </div>
+            <div class="paper-versus"><span class="flag">🇺🇸</span> USA vs <span style="color:var(--red-soft)">Italia</span></div>
+            <div class="paper-image"><img src="img/page3_img2.jpeg" alt="Escenario Torch" /></div>
+            <p class="paper-note">Carrera hacia Túnez tras el desembarco aliado y choque con fuerzas italianas.</p>
+          </a>
+
+          <a class="scenario-paper" href="kasserine.html">
+            <span class="paper-pin"></span>
+            <div class="paper-head">
+              <h2 class="paper-title">Kasserine</h2>
+              <div class="paper-date">Febrero · 1943</div>
+            </div>
+            <div class="paper-versus"><span class="flag">🇺🇸</span> USA vs DAK</div>
+            <div class="paper-image"><img src="img/page4_img1.jpeg" alt="Escenario Kasserine" /></div>
+            <p class="paper-note">Paso montañoso, contraataque del Afrika Korps y terreno duro para los estadounidenses.</p>
+          </a>
+
+          <a class="scenario-paper" href="tunez.html">
+            <span class="paper-pin"></span>
+            <div class="paper-head">
+              <h2 class="paper-title">Túnez</h2>
+              <div class="paper-date">Mayo · 1943</div>
+            </div>
+            <div class="paper-versus"><span class="flag">🇺🇸</span><span class="flag">🇬🇧</span> vs Eje</div>
+            <div class="paper-image"><img src="img/page6_img1.jpeg" alt="Escenario Túnez" /></div>
+            <p class="paper-note">Asalto final aliado sobre la capital tunecina y cierre del frente africano.</p>
+          </a>
+        </section>
+
+        <section class="button-row">
+          <a class="poster-btn" href="#mapa"><span class="btn-icon">🧭</span><span>Cronología</span></a>
+          <a class="poster-btn primary" href="#escenarios"><span class="btn-icon">🪖</span><span>Escenarios</span></a>
+          <a class="poster-btn" href="tobruk.html"><span class="btn-icon">📜</span><span>Reglas</span></a>
+          <a class="poster-btn" href="#galeria"><span class="btn-icon">📸</span><span>Resultados</span></a>
+          <a class="poster-btn" href="#archivo"><span class="btn-icon">🗂️</span><span>Archivo</span></a>
+        </section>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="galeria">
+      <h2 class="section-title">Galería del dossier</h2>
+      <div class="gallery-grid">
+        <a class="photo-link" href="img/page1_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page1_img1.jpeg" alt="Mandos del Eje y Aliados en la campaña del Norte de África" />
+            <figcaption>Mandos y ambiente general del teatro norteafricano.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page2_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page2_img1.jpeg" alt="Explosión en el desierto durante los combates del Norte de África" />
+            <figcaption>Bombardeo y paisaje abierto para ambientar Tobruk y Gazala.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page2_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page2_img2.jpeg" alt="Infantería observando desde una posición rocosa en el desierto" />
+            <figcaption>Observación y fuego desde posiciones avanzadas del desierto.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page3_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page3_img1.jpeg" alt="Vehículo blindado en terreno desértico" />
+            <figcaption>Reconocimiento blindado y movilidad en Gazala.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page3_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page3_img2.jpeg" alt="Tropas y vehículo italiano durante la campaña africana" />
+            <figcaption>Presencia italiana en los escenarios centrales de la campaña.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page4_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page4_img1.jpeg" alt="Columna de soldados avanzando por una carretera entre lomas" />
+            <figcaption>Marcha por terreno quebrado, ideal para Kasserine.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page4_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page4_img2.jpeg" alt="Soldados tras un parapeto rocoso durante el combate" />
+            <figcaption>Combate a cubierto y presión defensiva en primera línea.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page5_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page5_img1.jpeg" alt="Carro Tigre en la campaña tunecina" />
+            <figcaption>Blindados alemanes en la fase final tunecina.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page5_img2.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page5_img2.jpeg" alt="Soldados e infantería junto a vehículos en terreno abierto" />
+            <figcaption>Avance y presión aliada en el cierre de la campaña.</figcaption>
+          </figure>
+        </a>
+        <a class="photo-link" href="img/page6_img1.jpeg" target="_blank" rel="noopener noreferrer">
+          <figure class="photo">
+            <img src="img/page6_img1.jpeg" alt="Entrada de carros en una ciudad norteafricana" />
+            <figcaption>Entrada urbana perfecta para la ofensiva final sobre Túnez.</figcaption>
+          </figure>
+        </a>
+      </div>
+    </section>
+
+    <section class="archive-section" id="archivo">
+      <h2 class="section-title">Archivo de campaña</h2>
+      <div class="archive-grid">
+        <div class="archive-box">
+          <h3>Contenido previsto</h3>
+          <ul>
+            <li>Una página dedicada para cada escenario.</li>
+            <li>Briefing histórico, despliegue y reglas especiales.</li>
+            <li>Resultados de partida y seguimiento de campaña.</li>
+            <li>Fotos de mesas, miniaturas y documentación.</li>
+          </ul>
+        </div>
+        <div class="archive-box">
+          <h3>Carpeta de imágenes</h3>
+          <p>La home usa <strong>logo.png</strong>, <strong>hero-principal.jpg</strong>, <strong>mapa.jpg</strong> y las imágenes extraídas del PDF de campaña. La estética general está pensada como póster principal de la web, mientras las páginas internas pueden ser más limpias y legibles.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-card">
+      <div>
+        <div class="smallcaps">Duelo en la Arena</div>
+        <div>Dossier interactivo de campaña · Bolt Action · Norte de África</div>
+      </div>
+      <div>
+        <div class="smallcaps">Estado del expediente</div>
+        <div>Portada póster integrada</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
