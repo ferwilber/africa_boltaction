@@ -174,13 +174,10 @@
       display: block;
       text-decoration: none;
       color: inherit;
-      background:
-        url('img/chincheta.png') center center / 118% 114% no-repeat,
-        linear-gradient(rgba(216,188,141,0.76), rgba(169,120,68,0.76)),
-        url('img/background.png') center center / cover no-repeat;
-      border: 1px solid rgba(85,57,36,0.18);
+      background: url('img/chincheta.png') center top / 100% 100% no-repeat;
+      border: none;
       box-shadow: 0 14px 24px rgba(0,0,0,0.12);
-      padding: 12px 12px 14px;
+      padding: 28px 18px 18px;
       position: relative;
       transform-origin: top center;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -203,8 +200,8 @@
     }
 
     .paper-head {
-      padding-top: 18px;
-      margin-bottom: 12px;
+      padding-top: 38px;
+      margin-bottom: 8px;
       text-align: center;
     }
 
@@ -213,15 +210,16 @@
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: clamp(2.1rem, 3vw, 3rem);
       text-transform: uppercase;
-      line-height: 0.95;
+      line-height: 0.9;
+      letter-spacing: 0.01em;
       color: var(--red);
     }
 
     .paper-date {
-      margin: 8px 0 0;
+      margin: 4px 0 0;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: clamp(1.2rem, 2.2vw, 2rem);
-      line-height: 1;
+      line-height: 0.95;
       text-transform: uppercase;
       color: var(--ink-soft);
     }
@@ -236,7 +234,8 @@
       text-transform: uppercase;
       color: var(--ink-soft);
       margin-bottom: 14px;
-      min-height: 42px;
+      margin-top: 2px;
+      min-height: 34px;
       flex-wrap: wrap;
       text-align: center;
     }
