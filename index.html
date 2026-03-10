@@ -28,9 +28,7 @@
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       color: var(--ink);
-      background:
-        linear-gradient(rgba(216,188,141,0.52), rgba(169,120,68,0.52)),
-        url('img/background.jpg') center center / cover no-repeat fixed;
+      background: url('img/background.jpg') center center / cover no-repeat fixed;
       min-height: 100vh;
     }
 
@@ -39,13 +37,8 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background:
-        repeating-linear-gradient(0deg, rgba(255,255,255,0.018), rgba(255,255,255,0.018) 1px, transparent 1px, transparent 4px),
-        repeating-linear-gradient(90deg, rgba(0,0,0,0.018), rgba(0,0,0,0.018) 1px, transparent 1px, transparent 5px),
-        radial-gradient(circle at 75% 82%, rgba(255,255,255,0.08), transparent 20%),
-        radial-gradient(circle at 14% 30%, rgba(0,0,0,0.05), transparent 16%);
-      mix-blend-mode: multiply;
-      opacity: 0.72;
+      background: rgba(255,255,255,0.06);
+      opacity: 1;
     }
 
     a { color: inherit; }
@@ -104,33 +97,19 @@
     }
 
     .poster {
-      background: linear-gradient(180deg, rgba(236,216,178,0.35), rgba(206,166,113,0.18));
-      border: 1px solid rgba(38,25,15,0.2);
-      box-shadow: 0 20px 50px var(--shadow);
-      overflow: hidden;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      overflow: visible;
       position: relative;
     }
 
     .poster::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 14%, rgba(255,255,255,0.20), transparent 18%),
-        radial-gradient(circle at 80% 24%, rgba(255,255,255,0.08), transparent 20%),
-        linear-gradient(180deg, rgba(241,224,192,0.58) 0%, rgba(215,180,126,0.34) 40%, rgba(150,107,61,0.22) 100%);
-      pointer-events: none;
+      content: none;
     }
 
     .poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.06), transparent 8%, transparent 92%, rgba(0,0,0,0.07)),
-        linear-gradient(180deg, rgba(0,0,0,0.08), transparent 10%, transparent 92%, rgba(0,0,0,0.10));
-      mix-blend-mode: multiply;
+      content: none;
     }
 
     .poster-inner {
@@ -161,19 +140,20 @@
       margin-top: 0;
       margin-bottom: 10px;
       position: relative;
-      background: rgba(218,190,142,0.58);
-      border: 1px solid rgba(38,25,15,0.16);
-      box-shadow: 0 18px 28px rgba(0,0,0,0.12);
-      backdrop-filter: blur(1px);
-      overflow: hidden;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      overflow: visible;
     }
 
     .map-panel img {
       display: block;
       width: 100%;
       height: auto;
-      mix-blend-mode: multiply;
-      opacity: 0.96;
+      opacity: 1;
+      mix-blend-mode: normal;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.14);
     }
 
     .section-labels {
@@ -250,18 +230,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       text-transform: uppercase;
       color: var(--ink-soft);
       margin-bottom: 14px;
       min-height: 42px;
+      flex-wrap: wrap;
+      text-align: center;
     }
 
-    .flag {
-      font-size: 1.9rem;
-      line-height: 1;
+    .flag-img {
+      width: 34px;
+      height: 24px;
+      object-fit: cover;
+      display: inline-block;
+      border: 1px solid rgba(38,25,15,0.2);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+      vertical-align: middle;
+    }
+
+    .versus-sep {
+      font-size: 0.95em;
+      letter-spacing: 0.04em;
     }
 
     .paper-image {
@@ -308,14 +300,14 @@
       min-height: 72px;
       text-decoration: none;
       color: var(--ink);
-      background: linear-gradient(180deg, rgba(224,194,145,0.98), rgba(198,157,102,0.98));
-      border: 1px solid rgba(55,36,20,0.18);
-      box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+      background: transparent;
+      border: 2px solid rgba(55,36,20,0.5);
+      box-shadow: none;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: clamp(1.25rem, 2vw, 2rem);
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       padding: 8px 10px;
     }
 
@@ -325,8 +317,9 @@
     }
 
     .poster-btn.primary {
-      background: linear-gradient(180deg, rgba(80,52,30,0.98), rgba(46,29,17,0.98));
+      background: rgba(43,33,21,0.9);
       color: #eadfca;
+      border-color: rgba(43,33,21,0.9);
     }
 
     .btn-icon {
@@ -337,22 +330,17 @@
     .gallery-section,
     .archive-section {
       margin-top: 28px;
-      background: rgba(233,214,181,0.86);
-      border: 1px solid rgba(38,25,15,0.18);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.1);
-      padding: 22px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 22px 0;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .gallery-section::before,
     .archive-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: repeating-linear-gradient(90deg, rgba(38,25,15,0.015), rgba(38,25,15,0.015) 1px, transparent 1px, transparent 120px);
-      opacity: 0.45;
+      content: none;
     }
 
     .gallery-section > *,
@@ -385,7 +373,7 @@
 
     .photo {
       height: 100%;
-      background: rgba(255,255,255,0.12);
+      background: transparent;
       border: 1px solid rgba(38,25,15,0.15);
       box-shadow: 0 10px 18px rgba(0,0,0,0.08);
       overflow: hidden;
@@ -411,7 +399,7 @@
       font-size: 0.92rem;
       line-height: 1.5;
       color: var(--ink-soft);
-      background: rgba(236,223,198,0.88);
+      background: transparent;
     }
 
     .archive-grid {
@@ -421,7 +409,7 @@
     }
 
     .archive-box {
-      background: rgba(255,255,255,0.12);
+      background: transparent;
       border: 1px solid rgba(38,25,15,0.15);
       padding: 18px;
       min-height: 180px;
@@ -478,16 +466,6 @@
       .button-row,
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-      .poster-top {
-        grid-template-columns: 1fr;
-        min-height: 0;
-      }
-
-      .hero-collage {
-        min-height: 380px;
       }
     }
 
@@ -560,7 +538,7 @@
               <h2 class="paper-title">Tobruk</h2>
               <div class="paper-date">Abril · 1941</div>
             </div>
-            <div class="paper-versus"><span class="flag">🇬🇧</span> Gran Bretaña vs <span style="color:var(--red-soft)">Italia</span></div>
+            <div class="paper-versus"><img class="flag-img" src="img/flag-gb.png" alt="Bandera de Gran Bretaña" /><span class="versus-sep">vs</span><img class="flag-img" src="img/flag-italia-1940.png" alt="Bandera de Italia de 1940" /></div>
             <div class="paper-image"><img src="img/page2_img1.jpeg" alt="Escenario Tobruk" /></div>
             <p class="paper-note">Perímetro fortificado, fuego cruzado y resistencia aliada frente a la presión italiana.</p>
           </a>
@@ -571,7 +549,7 @@
               <h2 class="paper-title">Gazala</h2>
               <div class="paper-date">Junio · 1942</div>
             </div>
-            <div class="paper-versus"><span class="flag">🇬🇧</span> Gran Bretaña vs DAK</div>
+            <div class="paper-versus"><img class="flag-img" src="img/flag-gb.png" alt="Bandera de Gran Bretaña" /><span class="versus-sep">vs</span><img class="flag-img" src="img/flag-nazi.png" alt="Bandera alemana nazi" /></div>
             <div class="paper-image"><img src="img/page3_img1.jpeg" alt="Escenario Gazala" /></div>
             <p class="paper-note">Maniobra envolvente, minas y guerra móvil en el gran desierto de Cirenaica.</p>
           </a>
@@ -582,7 +560,7 @@
               <h2 class="paper-title">Torch</h2>
               <div class="paper-date">Diciembre · 1942</div>
             </div>
-            <div class="paper-versus"><span class="flag">🇺🇸</span> Estados Unidos vs <span style="color:var(--red-soft)">Italia</span></div>
+            <div class="paper-versus"><img class="flag-img" src="img/flag-usa.png" alt="Bandera de Estados Unidos" /><span class="versus-sep">vs</span><img class="flag-img" src="img/flag-italia-1940.png" alt="Bandera de Italia de 1940" /></div>
             <div class="paper-image"><img src="img/page3_img2.jpeg" alt="Escenario Torch" /></div>
             <p class="paper-note">Carrera hacia Túnez tras el desembarco aliado y choque con fuerzas italianas.</p>
           </a>
@@ -593,7 +571,7 @@
               <h2 class="paper-title">Kasserine</h2>
               <div class="paper-date">Febrero · 1943</div>
             </div>
-            <div class="paper-versus"><span class="flag">🇺🇸</span> Estados Unidos vs DAK</div>
+            <div class="paper-versus"><img class="flag-img" src="img/flag-usa.png" alt="Bandera de Estados Unidos" /><span class="versus-sep">vs</span><img class="flag-img" src="img/flag-nazi.png" alt="Bandera alemana nazi" /></div>
             <div class="paper-image"><img src="img/page4_img1.jpeg" alt="Escenario Kasserine" /></div>
             <p class="paper-note">Paso montañoso, contraataque del Afrika Korps y terreno duro para los estadounidenses.</p>
           </a>
@@ -604,7 +582,7 @@
               <h2 class="paper-title">Túnez</h2>
               <div class="paper-date">Mayo · 1943</div>
             </div>
-            <div class="paper-versus"><span class="flag">🇺🇸</span><span class="flag">🇬🇧</span> Estados Unidos + Gran Bretaña vs Eje</div>
+            <div class="paper-versus"><img class="flag-img" src="img/flag-usa.png" alt="Bandera de Estados Unidos" /><img class="flag-img" src="img/flag-gb.png" alt="Bandera de Gran Bretaña" /><span class="versus-sep">vs</span><img class="flag-img" src="img/flag-nazi.png" alt="Bandera alemana nazi" /><img class="flag-img" src="img/flag-italia-1940.png" alt="Bandera de Italia de 1940" /></div>
             <div class="paper-image"><img src="img/page6_img1.jpeg" alt="Escenario Túnez" /></div>
             <p class="paper-note">Asalto final aliado sobre la capital tunecina y cierre del frente africano.</p>
           </a>
