@@ -113,7 +113,10 @@
       position: relative;
     }
 
-    .poster::before {: 0;
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
         radial-gradient(circle at 20% 14%, rgba(255,255,255,0.20), transparent 18%),
         radial-gradient(circle at 80% 24%, rgba(255,255,255,0.08), transparent 20%),
@@ -132,13 +135,13 @@
       mix-blend-mode: multiply;
     }
 
-    
+    .poster-inner {
+      position: relative;
+      z-index: 1;
+      padding: 24px 24px 28px;
+    }
 
     .header-image-wrap {
-      margin: -24px -24px 10px;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(38,25,15,0.16).header-image-wrap {
       margin: -24px -24px 10px;
       position: relative;
       overflow: hidden;
@@ -150,8 +153,96 @@
       width: 100%;
       display: block;
       height: auto;
-    }0px 32n: 0;
-olor: var(--ink-soft);
+    }
+
+    
+
+    
+
+    .map-panel {
+      margin-top: -20px;
+      position: relative;
+      background: rgba(218,190,142,0.58);
+      border: 1px solid rgba(38,25,15,0.16);
+      box-shadow: 0 18px 28px rgba(0,0,0,0.12);
+      backdrop-filter: blur(1px);
+      overflow: hidden;
+    }
+
+    .map-panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+      opacity: 0.96;
+    }
+
+    .section-labels {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      margin-top: -6px;
+      align-items: start;
+    }
+
+    .scenario-paper {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: linear-gradient(180deg, rgba(241,227,201,0.95), rgba(221,194,148,0.95));
+      border: 1px solid rgba(85,57,36,0.18);
+      box-shadow: 0 14px 24px rgba(0,0,0,0.12);
+      padding: 12px 12px 14px;
+      position: relative;
+      transform-origin: top center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 368px;
+    }
+
+    .scenario-paper:nth-child(1) { transform: rotate(-1.2deg); }
+    .scenario-paper:nth-child(2) { transform: rotate(0.8deg); }
+    .scenario-paper:nth-child(3) { transform: rotate(-0.6deg); }
+    .scenario-paper:nth-child(4) { transform: rotate(0.9deg); }
+    .scenario-paper:nth-child(5) { transform: rotate(-1deg); }
+
+    .scenario-paper:hover {
+      transform: translateY(-6px) rotate(0deg);
+      box-shadow: 0 20px 32px rgba(0,0,0,0.18);
+    }
+
+    .paper-pin {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #7f5a34;
+      position: absolute;
+      left: calc(50% - 6px);
+      top: 10px;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.28), 0 1px 3px rgba(0,0,0,0.26);
+    }
+
+    .paper-head {
+      padding-top: 18px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .paper-title {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(2.1rem, 3vw, 3rem);
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--red);
+    }
+
+    .paper-date {
+      margin: 8px 0 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.2rem, 2.2vw, 2rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink-soft);
     }
 
     .paper-versus {
@@ -360,7 +451,19 @@ olor: var(--ink-soft);
     footer {
       max-width: 1440px;
       margin: 0 auto;
-      padding: 0 20px a(0,0,0,0.14);
+      padding: 0 20px 36px;
+    }
+
+    .footer-card {
+      background: rgba(43,33,21,0.92);
+      color: #eadfca;
+      border: 1px solid rgba(234,217,182,0.15);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.14);
     }
 
     .smallcaps {
@@ -373,15 +476,42 @@ olor: var(--ink-soft);
       .section-labels,
       .button-row,
       .gallery-grid {
-        grid-template-coing {
-        font-size: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+      .poster-top {
+        grid-template-columns: 1fr;
+        min-height: 0;
       }
 
-      .top-secret {
-        font-size: 1.25rem;
-        padding: 6px 10px;
-        right: 14px;
-        top: 14px;
+      .hero-collage {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner {
+        padding: 8px 14px;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 72px;
+      }
+
+      .topbar-title {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        white-space: normal;
+      }
+
+      .poster-inner {
+        padding: 18px 16px 22px;
+      }
+
+      .header-image-wrap {
+        margin: -18px -16px 10px;
       }
 
       .section-labels,
@@ -397,12 +527,25 @@ olor: var(--ink-soft);
 
       .photo img {
         height: 240px;
-          <h1 class="poster-title">DUELO <span class="accent">EN LA</span><br />ARENA</h1>
-            <div class="subheading">Campaña Bolt Action – Norte de África (1941–1943)</div>
-          </div>
-          <div class="hero-collage">
-            <img class="hero-image" src="img/hero-principal.jpg" alt="Mandos del Eje y Aliados en la campaña del Norte de África" />
-          </div>
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Ir a la página principal de Duelo en la Arena">
+        <img class="brand-logo" src="img/logo.png" alt="Duelo en la Arena" />
+      </a>
+      <a class="topbar-title" href="index.html">Duelo en la Arena</a>
+    </div>
+  </header>
+
+  <div class="page">
+    <section class="poster">
+      <div class="poster-inner">
+        <div class="header-image-wrap">
+          <img class="header-image" src="img/header.png" alt="Cabecera principal de Duelo en la Arena" />
         </div>
 
         <section class="map-panel" id="mapa">
@@ -438,39 +581,23 @@ olor: var(--ink-soft);
               <h2 class="paper-title">Torch</h2>
               <div class="paper-date">Diciembre · 1942</div>
             </div>
-            <div class="paper-versus"><span c@media (max-width: 1200px) {
-      .section-labels,
-      .button-row,
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }2.jpeg" alt="Escenario Torch" /></div>
+            <div class="paper-versus"><span class="flag">🇺🇸</span> USA vs <span style="color:var(--red-soft)">Italia</span></div>
+            <div class="paper-image"><img src="img/page3_img2.jpeg" alt="Escenario Torch" /></div>
             <p class="paper-note">Carrera hacia Túnez tras el desembarco aliado y choque con fuerzas italianas.</p>
-   @media (max-width: 780px) {
-      .topbar-inner {
-        padding: 8px 14px;
-        gap: 10px;
-      }
+          </a>
 
-      .brand-logo {
-        width: 72px;
-      }
+          <a class="scenario-paper" href="kasserine.html">
+            <span class="paper-pin"></span>
+            <div class="paper-head">
+              <h2 class="paper-title">Kasserine</h2>
+              <div class="paper-date">Febrero · 1943</div>
+            </div>
+            <div class="paper-versus"><span class="flag">🇺🇸</span> USA vs DAK</div>
+            <div class="paper-image"><img src="img/page4_img1.jpeg" alt="Escenario Kasserine" /></div>
+            <p class="paper-note">Paso montañoso, contraataque del Afrika Korps y terreno duro para los estadounidenses.</p>
+          </a>
 
-      .topbar-title {
-        font-size: 1rem;
-        letter-spacing: 0.08em;
-        white-space: normal;
-      }
-
-      .poster-inner {
-        padding: 18px 16px 22px;
-      }
-
-      .header-image-wrap {
-        margin: -18px -16px 10px;
-      }
-
-      .section-labels,         <a class="scenario-paper" href="tunez.html">
+          <a class="scenario-paper" href="tunez.html">
             <span class="paper-pin"></span>
             <div class="paper-head">
               <h2 class="paper-title">Túnez</h2>
@@ -482,12 +609,17 @@ olor: var(--ink-soft);
           </a>
         </section>
 
-        <section class="<div class="poster-inner">
-        <div class="header-image-wrap">
-          <img class="header-image" src="img/header.png" alt="Cabecera principal de Duelo en la Arena" />
-        </div>
+        <section class="button-row">
+          <a class="poster-btn" href="#mapa"><span class="btn-icon">🧭</span><span>Cronología</span></a>
+          <a class="poster-btn primary" href="#escenarios"><span class="btn-icon">🪖</span><span>Escenarios</span></a>
+          <a class="poster-btn" href="tobruk.html"><span class="btn-icon">📜</span><span>Reglas</span></a>
+          <a class="poster-btn" href="#galeria"><span class="btn-icon">📸</span><span>Resultados</span></a>
+          <a class="poster-btn" href="#archivo"><span class="btn-icon">🗂️</span><span>Archivo</span></a>
+        </section>
+      </div>
+    </section>
 
-        <section class="map-panel"ria">
+    <section class="gallery-section" id="galeria">
       <h2 class="section-title">Galería del dossier</h2>
       <div class="gallery-grid">
         <a class="photo-link" href="img/page1_img1.jpeg" target="_blank" rel="noopener noreferrer">
