@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gazala — Bir-el Harmat, 2 de junio de 1942</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="shortcut icon" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/favicon.png" />
+  <style>
+    :root {
+      --ink: #24180f;
+      --ink-soft: #5f4832;
+      --paper: rgba(236, 219, 188, 0.9);
+      --paper-2: rgba(222, 196, 151, 0.9);
+      --line: rgba(56, 39, 24, 0.18);
+      --shadow: rgba(0, 0, 0, 0.22);
+      --red: #8e3223;
+      --brown: rgba(56, 35, 21, 0.92);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background-color: #a97844;
+      background-image: url('img/background.png');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: rgba(0,0,0,0.08);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--brown);
+      border-bottom: 1px solid rgba(232,210,168,0.16);
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-inner {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #eadfca;
+    }
+
+    .brand-logo {
+      width: 88px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.24));
+    }
+
+    .topbar-title {
+      color: #eadfca;
+      text-decoration: none;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.3rem, 2.8vw, 2.25rem);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      line-height: 0.95;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.22);
+      white-space: nowrap;
+    }
+
+    .page {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(236,219,188,0.82), rgba(212,178,126,0.72)),
+        url('img/mapa.jpg') center center / cover no-repeat;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 44px var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-banner {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 30px 28px 26px;
+      background: linear-gradient(rgba(239,225,198,0.85), rgba(221,193,149,0.78));
+      border-right: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.35rem, 2.8vw, 2.2rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-text {
+      margin: 18px 0 0;
+      max-width: 60ch;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .hero-side {
+      min-height: 290px;
+      background:
+        linear-gradient(rgba(24,16,9,0.18), rgba(24,16,9,0.1)),
+        url('img/page3_img1.jpeg') center center / cover no-repeat;
+      filter: grayscale(1) sepia(0.35) contrast(1.03);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 22px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: linear-gradient(rgba(237,221,191,0.92), rgba(220,192,147,0.9));
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(90deg, rgba(36,24,15,0.015), rgba(36,24,15,0.015) 1px, transparent 1px, transparent 110px);
+      opacity: 0.45;
+    }
+
+    .panel > * { position: relative; z-index: 1; }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .subsection-title {
+      margin: 22px 0 10px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 1.5rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--red);
+      letter-spacing: 0.04em;
+    }
+
+    .text p,
+    .text li {
+      font-size: 1rem;
+      line-height: 1.72;
+      color: var(--ink-soft);
+    }
+
+    .text p { margin: 0 0 12px; }
+
+    .text ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+
+    .scenario-meta {
+      display: grid;
+      gap: 16px;
+    }
+
+    .meta-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--line);
+      padding: 16px;
+    }
+
+    .meta-box h3 {
+      margin: 0 0 10px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 1.35rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .meta-box p,
+    .meta-box li {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .meta-box ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+
+    .deployment-map {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(36,24,15,0.18);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      text-decoration: none;
+      color: #eadfca;
+      background: rgba(43,33,21,0.92);
+      border: 1px solid rgba(234,217,182,0.16);
+      padding: 12px 16px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.14);
+    }
+
+    .back-link:hover {
+      background: rgba(60,45,29,0.94);
+    }
+
+    footer {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 0 20px 36px;
+    }
+
+    .footer-card {
+      background: rgba(43,33,21,0.92);
+      color: #eadfca;
+      border: 1px solid rgba(234,217,182,0.15);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.14);
+    }
+
+    .smallcaps {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-banner,
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner {
+        padding: 8px 14px;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 72px;
+      }
+
+      .topbar-title {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        white-space: normal;
+      }
+
+      .page {
+        padding: 18px 14px 28px;
+      }
+
+      .hero-copy,
+      .panel {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Ir a la página principal de Duelo en la Arena">
+        <img class="brand-logo" src="img/logo.png" alt="Duelo en la Arena" />
+      </a>
+      <a class="topbar-title" href="index.html">Duelo en la Arena</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-banner">
+        <div class="hero-copy">
+          <p class="eyebrow">Escenario 2 · Frente del Desierto</p>
+          <h1>Gazala</h1>
+          <div class="subtitle">Bir-el Harmat, 2 de junio de 1942</div>
+          <p class="hero-text">Un choque entre la Commonwealth británica y el Afrika Korps en pleno arranque de la ofensiva de Gazala, con un campo de minas concéntrico, la Brigada Judía atrincherada y una primera oleada alemana entrando desde cualquier borde de la mesa.</p>
+        </div>
+        <div class="hero-side" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="content">
+      <article class="panel text">
+        <h2 class="section-title">Fuerzas enfrentadas</h2>
+        <p>Esta batalla se libra entre las fuerzas de la Commonwealth británica y el Afrika Korps.</p>
+        <p>Los pelotones británicos deben elegirse del selector de pelotón reforzado de Brigada de Infantería Británica de 1942. En este escenario no pueden elegirse selecciones de cuartel general ni de infantería.</p>
+        <p>Los pelotones alemanes deben elegirse del selector de pelotón reforzado de División Panzer DAK de 1942. Ten en cuenta que el Panzer IV F2 no puede seleccionarse en este escenario.</p>
+
+        <h3 class="subsection-title">Despliegue</h3>
+        <p>Todas las fuerzas de la Brigada Judía deben colocarse a menos de 12” del centro de la mesa. Las unidades del Afrika Korps pueden entrar por cualquier borde de la mesa.</p>
+        <p>No hay unidades desplegadas sobre la mesa al comienzo de la batalla. Ambos bandos deben designar al menos la mitad de su fuerza para formar la primera oleada. Puede ser el ejército entero si así se desea. Las unidades no incluidas quedarán en reserva.</p>
+
+        <h3 class="subsection-title">Reglas especiales</h3>
+        <h3 class="subsection-title">Terreno</h3>
+        <p>La mesa representa desierto abierto, con cobertura limitada a pequeños grupos de arbustos y afloramientos de roca arenisca. Como se muestra en el mapa, toda el área dentro de un radio de 18” desde el centro de la mesa se considera un campo de minas mixto anticarro/antipersonal. Asume que el campo está compuesto por tres anillos concéntricos de minas de 6” de anchura. Además, debido a sus numerosas trincheras y pozos de tirador, toda el área de despliegue de la Brigada Judía se considera terreno difícil.</p>
+
+        <h3 class="subsection-title">Brigada Judía</h3>
+        <p>Todas las unidades de la Brigada Judía comienzan el escenario atrincheradas y ocultas.</p>
+        <p>Conocen perfectamente la disposición del campo de minas y nunca son atacadas por él.</p>
+        <p>Como están luchando contra un enemigo odiado, se consideran tozudas.</p>
+        <p>También son cazatanques superiores. Tienen todas las ventajas normales del rasgo cazatanques, pero al asaltar un vehículo impactarán con un 3, 4, 5 o 6 si este está inmovilizado, tiene una orden de Down o aún no se ha movido. Si el vehículo tiene una orden de Advance, podrá ser impactado con una tirada de 5 o 6.</p>
+
+        <h3 class="subsection-title">Ataques aéreos</h3>
+        <p>Al comienzo de la ofensiva de Gazala, el cuartel general de la Luftwaffe fue trasladado al norte de África y todos sus recursos aéreos se emplearon en apoyo de la ofensiva. Junto con los italianos en el norte de África, tenían superioridad numérica y cualitativa, y además el combate estaba al alcance de los aeródromos de Creta. Por ello, en los escenarios de Gazala, que se sitúan en la fase inicial de la ofensiva, el Eje debe contar con una clara superioridad.</p>
+        <p>El jugador del Eje puede desplegar un observador aéreo avanzado.</p>
+
+        <h3 class="subsection-title">Objetivo</h3>
+        <p>Las fuerzas alemanas deben intentar llevar vehículos blindados al centro de la zona de despliegue de la Brigada Judía.</p>
+
+        <h3 class="subsection-title">Primer turno</h3>
+        <p>Durante el Turno 1, los alemanes deben introducir en la mesa su primera oleada. Estas unidades pueden entrar en la mesa por cualquier borde y deben recibir una orden de Run o Advance. Ten en cuenta que no es necesario realizar chequeo de orden para mover unidades a la mesa como parte de una primera oleada.</p>
+
+        <h3 class="subsection-title">Duración de la partida</h3>
+        <p>Lleva la cuenta de cuántos turnos han transcurrido durante la partida. Al final del Turno 6, tira un dado. Con un resultado de 1, 2 o 3, la partida termina; con un 4, 5 o 6, se juega un turno adicional.</p>
+
+        <h3 class="subsection-title">¡Victoria!</h3>
+        <p>Al final de la partida, determina qué bando ha ganado sumando los puntos de victoria obtenidos por cada uno. Si un bando consigue al menos 5 puntos más que el otro, obtiene una victoria clara. En caso contrario, el resultado se considera demasiado ajustado y la batalla termina en empate.</p>
+        <p>La Brigada Judía recibe 2 puntos de victoria por cada unidad alemana destruida.</p>
+        <p>El jugador alemán recibe 1 punto de victoria por cada unidad de la Brigada Judía destruida y 3 puntos de victoria por cada vehículo blindado alemán no inmovilizado que se encuentre a menos de 6” del centro de la zona de despliegue de la Brigada Judía.</p>
+      </article>
+
+      <aside class="scenario-meta">
+        <section class="panel meta-box">
+          <h3>Despliegue</h3>
+          <img class="deployment-map" src="img/gazala-despliegue.png" alt="Mapa de despliegue del escenario de Gazala" />
+        </section>
+
+        <section class="panel meta-box">
+          <h3>Resumen rápido</h3>
+          <ul>
+            <li>Británicos: Brigada Judía atrincherada y oculta.</li>
+            <li>Alemanes: primera oleada por cualquier borde de la mesa.</li>
+            <li>Campo de minas concéntrico de 18” desde el centro.</li>
+            <li>El Eje puede usar observador aéreo avanzado.</li>
+            <li>Victoria alemana si penetra con blindados en el núcleo judío.</li>
+          </ul>
+        </section>
+
+        <a class="back-link" href="index.html">← Volver a la campaña</a>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-card">
+      <div>
+        <div class="smallcaps">Duelo en la Arena</div>
+        <div>Escenario Gazala · Bolt Action · Norte de África</div>
+      </div>
+      <div>
+        <div class="smallcaps">Estado del expediente</div>
+        <div>Página de escenario operativa</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
