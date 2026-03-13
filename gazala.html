@@ -157,10 +157,19 @@
 
     .hero-side {
       min-height: 290px;
-      background:
-        linear-gradient(rgba(24,16,9,0.18), rgba(24,16,9,0.1)),
-        url('img/page3_img1.jpeg') center center / cover no-repeat;
-      filter: grayscale(1) sepia(0.35) contrast(1.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(239,225,198,0.72), rgba(212,178,126,0.66));
+      border-left: 1px solid var(--line);
+      padding: 22px;
+    }
+
+    .hero-side-logo {
+      width: min(500px, 100%);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
     }
 
     .content {
@@ -209,6 +218,38 @@
       text-transform: uppercase;
       color: var(--red);
       letter-spacing: 0.04em;
+    }
+
+    .lead {
+      font-style: italic;
+      color: #6b4d34;
+      border-left: 4px solid rgba(142,50,35,0.35);
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .insert-photo {
+      margin: 18px auto 20px;
+      max-width: 720px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(36,24,15,0.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+      padding: 10px;
+    }
+
+    .insert-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: grayscale(1) sepia(0.32) contrast(1.02);
+    }
+
+    .insert-photo figcaption {
+      margin: 10px 2px 0;
+      font-size: 0.94rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      font-style: italic;
     }
 
     .text p,
@@ -407,13 +448,16 @@
           <div class="subtitle">Bir-el Harmat, 2 de junio de 1942</div>
           <p class="hero-text">Un choque entre la Commonwealth británica y el Afrika Korps en pleno arranque de la ofensiva de Gazala, con un campo de minas concéntrico, la Brigada Judía atrincherada y una primera oleada alemana entrando desde cualquier borde de la mesa.</p>
         </div>
-        <div class="hero-side" aria-hidden="true"></div>
+        <div class="hero-side">
+          <img class="hero-side-logo" src="img/logo.png" alt="Logo de Duelo en la Arena" />
+        </div>
       </div>
     </section>
 
     <section class="content">
       <article class="panel text">
         <h2 class="section-title">Fuerzas enfrentadas</h2>
+        <p class="lead">Informe operacional sobre el sector de Bir-el Harmat durante el arranque de la ofensiva de Gazala. La acción enfrenta una defensa atrincherada y conocedora del terreno con una penetración blindada del Afrika Korps bajo apoyo aéreo superior.</p>
         <p>Esta batalla se libra entre las fuerzas de la Commonwealth británica y el Afrika Korps.</p>
         <p>Los pelotones británicos deben elegirse del selector de pelotón reforzado de Brigada de Infantería Británica de 1942. En este escenario no pueden elegirse selecciones de cuartel general ni de infantería.</p>
         <p>Los pelotones alemanes deben elegirse del selector de pelotón reforzado de División Panzer DAK de 1942. Ten en cuenta que el Panzer IV F2 no puede seleccionarse en este escenario.</p>
@@ -421,10 +465,20 @@
         <h3 class="subsection-title">Despliegue</h3>
         <p>Todas las fuerzas de la Brigada Judía deben colocarse a menos de 12” del centro de la mesa. Las unidades del Afrika Korps pueden entrar por cualquier borde de la mesa.</p>
         <p>No hay unidades desplegadas sobre la mesa al comienzo de la batalla. Ambos bandos deben designar al menos la mitad de su fuerza para formar la primera oleada. Puede ser el ejército entero si así se desea. Las unidades no incluidas quedarán en reserva.</p>
+        <figure class="insert-photo">
+          <a class="deployment-link" href="img/gazala-despliegue.png" target="_blank" rel="noopener noreferrer">
+            <img class="deployment-map" src="img/gazala-despliegue.png" alt="Mapa de despliegue del escenario de Gazala" />
+          </a>
+          <figcaption>Plano de despliegue del escenario. Haz clic sobre la imagen para verla ampliada.</figcaption>
+        </figure>
 
         <h3 class="subsection-title">Reglas especiales</h3>
         <h3 class="subsection-title">Terreno</h3>
         <p>La mesa representa desierto abierto, con cobertura limitada a pequeños grupos de arbustos y afloramientos de roca arenisca. Como se muestra en el mapa, toda el área dentro de un radio de 18” desde el centro de la mesa se considera un campo de minas mixto anticarro/antipersonal. Asume que el campo está compuesto por tres anillos concéntricos de minas de 6” de anchura. Además, debido a sus numerosas trincheras y pozos de tirador, toda el área de despliegue de la Brigada Judía se considera terreno difícil.</p>
+        <figure class="insert-photo">
+          <img src="img/page3_img1.jpeg" alt="Vehículo blindado en el desierto, apropiado para Gazala" />
+          <figcaption>La guerra de movimiento en Gazala exigía reconocimiento blindado, navegación en desierto abierto y rápidas maniobras de penetración.</figcaption>
+        </figure>
 
         <h3 class="subsection-title">Brigada Judía</h3>
         <p>Todas las unidades de la Brigada Judía comienzan el escenario atrincheradas y ocultas.</p>
@@ -435,6 +489,10 @@
         <h3 class="subsection-title">Ataques aéreos</h3>
         <p>Al comienzo de la ofensiva de Gazala, el cuartel general de la Luftwaffe fue trasladado al norte de África y todos sus recursos aéreos se emplearon en apoyo de la ofensiva. Junto con los italianos en el norte de África, tenían superioridad numérica y cualitativa, y además el combate estaba al alcance de los aeródromos de Creta. Por ello, en los escenarios de Gazala, que se sitúan en la fase inicial de la ofensiva, el Eje debe contar con una clara superioridad.</p>
         <p>El jugador del Eje puede desplegar un observador aéreo avanzado.</p>
+        <figure class="insert-photo">
+          <img src="img/page4_img2.jpeg" alt="Soldados combatiendo a cubierto en terreno árido" />
+          <figcaption>La presión sobre posiciones atrincheradas y la lucha desde parapetos improvisados reflejan bien el tono del enfrentamiento en Bir-el Harmat.</figcaption>
+        </figure>
 
         <h3 class="subsection-title">Objetivo</h3>
         <p>Las fuerzas alemanas deben intentar llevar vehículos blindados al centro de la zona de despliegue de la Brigada Judía.</p>
@@ -453,12 +511,18 @@
 
       <section class="scenario-meta">
         <section class="panel meta-box">
-          <h3>Despliegue</h3>
-          <a class="deployment-link" href="img/gazala-despliegue.png" target="_blank" rel="noopener noreferrer">
-            <img class="deployment-map" src="img/gazala-despliegue.png" alt="Mapa de despliegue del escenario de Gazala" />
-          </a>
-          <p class="deployment-caption">Haz clic sobre el mapa para verlo ampliado. La Brigada Judía se despliega en el centro y el Afrika Korps puede entrar por cualquier borde de la mesa.</p>
+          <h3>Resumen rápido</h3>
+          <ul>
+            <li>Británicos: Brigada Judía atrincherada y oculta.</li>
+            <li>Alemanes: primera oleada por cualquier borde de la mesa.</li>
+            <li>Campo de minas concéntrico de 18” desde el centro.</li>
+            <li>El Eje puede usar observador aéreo avanzado.</li>
+            <li>Victoria alemana si penetra con blindados en el núcleo judío.</li>
+          </ul>
         </section>
+
+        <a class="back-link" href="index.html">← Volver a la campaña</a>
+      </section>
 
         <section class="panel meta-box">
           <h3>Ambiente del escenario</h3>
