@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escenario 6: El Asedio de Tobruk</title>
+  <style>
+    :root {
+      --arena: #d8c3a3;
+      --arena-oscura: #b6956b;
+      --tinta: #1f1a17;
+      --verde-militar: #6f7c5b;
+      --panel: rgba(248, 243, 233, 0.92);
+      --borde: rgba(60, 45, 30, 0.22);
+      --sombra: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--tinta);
+      background:
+        linear-gradient(rgba(244, 236, 220, 0.84), rgba(244, 236, 220, 0.9)),
+        url('background.png') center/cover fixed no-repeat;
+      line-height: 1.6;
+    }
+
+    header.hero {
+      min-height: 46vh;
+      display: flex;
+      align-items: end;
+      padding: 4rem 1.5rem 2rem;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0.18)),
+        url('page1_img1.jpeg') center/cover no-repeat;
+      border-bottom: 4px solid rgba(0,0,0,0.18);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      color: #f7f2e8;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.18);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    h1, h2, h3 {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 0 0 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      text-shadow: 0 3px 12px rgba(0,0,0,0.35);
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+      color: var(--verde-militar);
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      color: #2c241e;
+      margin-top: 1.2rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .intro,
+    .panel,
+    .image-panel {
+      background: var(--panel);
+      border: 1px solid var(--borde);
+      box-shadow: var(--sombra);
+      border-radius: 10px;
+    }
+
+    .intro {
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel {
+      padding: 1.35rem;
+    }
+
+    .image-panel {
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .image-panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      padding: 0.85rem 1rem 1rem;
+      font-size: 0.95rem;
+      color: #4a4037;
+      background: rgba(255,255,255,0.28);
+      border-top: 1px solid var(--borde);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      margin: 0.35rem 0 1rem 1.1rem;
+      padding: 0;
+    }
+
+    li { margin-bottom: 0.4rem; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1rem 0 0;
+    }
+
+    .stat {
+      background: rgba(111,124,91,0.12);
+      border: 1px solid rgba(111,124,91,0.22);
+      border-radius: 8px;
+      padding: 0.9rem;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .objective {
+      border-left: 6px solid var(--verde-militar);
+      padding-left: 1rem;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+      color: #4f453b;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .two-col, .grid-2, .stats {
+        grid-template-columns: 1fr;
+      }
+
+      header.hero {
+        min-height: 38vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Bolt Action · Norte de África · Escenario 6</div>
+      <h1>El Asedio de Tobruk</h1>
+      <p>Tobruk resistió durante meses los asaltos del Eje. Esta versión del escenario se plantea como un enfrentamiento puro entre británicos y Commonwealth contra italianos.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Contexto histórico</h2>
+      <p>Tobruk fue la roca que se mantuvo firme frente a los asaltos del Eje. Desde el 10 de abril hasta el 27 de noviembre de 1941, la guarnición aliada resistió repetidos ataques sobre el puerto. El asedio no se levantó hasta la Operación Crusader, y Tobruk siguió en manos aliadas hasta la derrota del 8.º Ejército en Gazala, en junio de 1942.</p>
+      <p>Esta versión del escenario representa una acción temprana del asedio reinterpretada como un asalto italiano contra uno de los puestos avanzados del perímetro, buscando abrir una brecha en las defensas aliadas.</p>
+      <div class="stats">
+        <div class="stat"><strong>1941</strong><span>Periodo principal del asedio</span></div>
+        <div class="stat"><strong>9 meses</strong><span>Resistencia bajo presión continua</span></div>
+        <div class="stat"><strong>Tobruk</strong><span>Puerto clave en el frente del desierto</span></div>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <article class="panel">
+        <h2>Las Ratas de Tobruk</h2>
+        <p>Los defensores de Tobruk fueron los primeros soldados en frenar el empuje del Eje en la campaña del norte de África. El apodo de <em>Ratas de Tobruk</em>, nacido como burla en las emisiones radiofónicas de Lord Haw-Haw, fue adoptado con orgullo por los australianos de la 9.ª División.</p>
+        <p>Durante el asedio construyeron una compleja red de posiciones, túneles y defensas. Lanzaban patrullas agresivas, capturaban prisioneros y realizaban golpes de mano nocturnos que mantenían a las fuerzas sitiadoras en tensión constante.</p>
+        <p>Cuando fueron retirados en octubre de 1941, lo hicieron tras meses de resistencia, con unas 3.000 bajas y más de 900 prisioneros, pero habiendo demostrado que incluso en el desierto el Eje podía ser contenido.</p>
+      </article>
+
+      <aside class="image-panel">
+        <img src="page2_img1.jpeg" alt="Patrulla australiana en Tobruk" />
+        <div class="caption">Usa aquí una foto distinta a las usadas en Gazala, mejor si muestra infantería australiana o posiciones defensivas en Tobruk.</div>
+      </aside>
+    </section>
+
+    <section class="grid-2">
+      <article class="panel">
+        <h2>Fuerzas</h2>
+        <p>Este escenario está pensado para jugarse como un enfrentamiento puro entre británicos y Commonwealth contra italianos, con fuerzas de igual valor en puntos por ambos bandos.</p>
+        <h3>Italianos</h3>
+        <ul>
+          <li>Pelotón reforzado de África en guerra (<em>Armies of Italy and the Axis</em>, p. 31).</li>
+          <li>Puedes representar el asalto como un ataque italiano contra una posición avanzada del perímetro, sin apoyo de fuerzas alemanas.</li>
+        </ul>
+        <h3>Británicos y Commonwealth</h3>
+        <ul>
+          <li>Pelotón reforzado Operation Compass (<em>Armies of Great Britain</em>, p. 72), representando a la 18.ª Brigada de Infantería Australiana.</li>
+          <li>Pelotón reforzado de la División India (p. 23), representando a la 18th King Edward’s Own Cavalry del Ejército Indio Británico.</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>Condiciones del defensor</h2>
+        <ul>
+          <li>El aliado debe desplegar un cañón anticarro.</li>
+          <li>Debe incluir una ametralladora.</li>
+          <li>Además, debe elegir entre un equipo anticarro o un equipo de mortero.</li>
+          <li>El jugador británico puede escoger un rasgo nacional adicional gratis.</li>
+          <li>No puede elegir unidades inexpertas.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="image-panel">
+      <img src="despliegue_tobruk.png" alt="Mapa de despliegue del escenario Tobruk" />
+      <div class="caption">Mapa de despliegue del escenario.</div>
+    </section>
+
+    <section class="grid-2">
+      <article class="panel">
+        <h2>Despliegue</h2>
+        <h3>Terreno</h3>
+        <p>Usa el mapa del escenario para colocar alambre frontal, campo de minas, emplazamientos de cañón anticarro y ametralladora, además del sistema de trincheras. El resto de la mesa representa desierto abierto.</p>
+        <h3>Defensor</h3>
+        <p>El jugador aliado despliega todas sus unidades en su mitad de la mesa, entre la trinchera trampa y la línea media. Puede usar despliegue oculto. Debe colocar el cañón anticarro, la ametralladora y el equipo anticarro o mortero en los emplazamientos, dejando todos ocupados.</p>
+        <h3>Atacante</h3>
+        <p>Las unidades italianas no empiezan sobre la mesa. El atacante debe asignar al menos la mitad de su fuerza a la primera oleada. El resto queda en reserva.</p>
+      </article>
+
+      <article class="panel">
+        <h2>Reglas especiales</h2>
+        <ul>
+          <li><strong>Primer turno:</strong> la primera oleada entra obligatoriamente en mesa con orden de avanzar o correr.</li>
+          <li><strong>Alambre frontal:</strong> cuenta como obstáculo.</li>
+          <li><strong>Emplazamientos:</strong> las unidades dentro quedan atrincheradas y no pueden abandonarlos.</li>
+          <li><strong>Reservas del atacante:</strong> no se permiten maniobras envolventes.</li>
+          <li><strong>Guerra del desierto:</strong> usa las reglas específicas del teatro.</li>
+          <li><strong>Combatientes del desierto:</strong> gratis para veteranos aliados; comprable por +2 puntos por miniatura para veteranos o regulares italianos.</li>
+          <li><strong>Mando desde el frente:</strong> no se usa en esta versión del escenario.</li>
+          <li><strong>Combate nocturno:</strong> este escenario usa reglas de combate nocturno.</li>
+          <li><strong>Control de los cielos:</strong> no concede ventaja adicional a ningún bando en esta partida.</li>
+          <li><strong>Suministro limitado de combustible:</strong> no se aplica a ningún bando.</li>
+          <li><strong>Campo de minas:</strong> es un campo mixto de minas anticarro y antipersona.</li>
+          <li><strong>Trinchera trampa:</strong> terreno difícil y campo de minas antipersona; proporciona cobertura.</li>
+          <li><strong>Trinchera de arrastre:</strong> cuenta como terreno abierto, pero la infantería en su interior está atrincherada.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="grid-2">
+      <article class="panel objective">
+        <h2>Objetivo</h2>
+        <p>El atacante italiano debe destruir los tres emplazamientos y, además, mover tantas unidades como pueda hacia la zona de brecha o hasta el borde de la mesa del defensor.</p>
+        <p>El defensor debe impedirlo. En este escenario, las unidades atacantes pueden salir deliberadamente por el borde de la mesa del defensor para alcanzar su objetivo.</p>
+      </article>
+
+      <article class="panel">
+        <h2>Duración y victoria</h2>
+        <p>La partida dura 6 turnos. Al final del turno 6 se tira un dado: con 1, 2 o 3, la partida termina; con 4, 5 o 6, se juega un turno adicional.</p>
+        <h3>Puntos de victoria</h3>
+        <ul>
+          <li>El atacante obtiene 1 punto por cada unidad enemiga destruida.</li>
+          <li>Si destruye los tres emplazamientos, obtiene además 2 puntos por cada una de sus unidades dentro de la zona de brecha.</li>
+          <li>Obtiene 3 puntos por cada unidad propia que salga por el borde de mesa enemigo antes del final de la partida.</li>
+          <li>El defensor británico obtiene 2 puntos por cada unidad enemiga destruida.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="two-col">
+      <aside class="image-panel">
+        <img src="page4_img1.jpeg" alt="Fuerzas italianas en el desierto" />
+        <div class="caption">Usa aquí una imagen distinta a las de Gazala, mejor si muestra tropas italianas, artillería ligera o carros CV33/CV35 en el frente del desierto.</div>
+      </aside>
+
+      <article class="panel">
+        <h2>Notas de ambientación</h2>
+        <p>Para que la página mantenga coherencia visual con Tobruk, encajan bien imágenes de posiciones defensivas, alambradas, infantería australiana en trincheras y fuerzas italianas avanzando en terreno árido. Evita reutilizar las fotos de Gazala para que cada escenario tenga identidad propia.</p>
+        <p>Los nombres de archivo usados en esta versión son <strong>page1_img1.jpeg</strong>, <strong>page2_img1.jpeg</strong> y <strong>page4_img1.jpeg</strong>. Se han evitado <strong>page3_img1.jpeg</strong> y <strong>page2_img2.jpeg</strong>, como indicaste.</p>/article>
+    </section>
+  </main>
+
+  <footer>
+    Escenario adaptado para campaña del Norte de África. Revisión específica: versión británicos y Commonwealth contra italianos.
+  </footer>
+</body>
+</html>
