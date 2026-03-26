@@ -236,7 +236,6 @@
       box-shadow: 0 12px 22px rgba(0,0,0,0.12);
       padding: 10px;
       width: 100%;
-      float: none;
     }
 
     .photo-row {
@@ -254,13 +253,17 @@
     }
 
     .insert-photo.left {
-      float: none;
-      margin: 0;
+      float: left;
+      margin: 6px 24px 14px 0;
     }
 
     .insert-photo.right {
-      float: none;
-      margin: 0;
+      float: right;
+      margin: 6px 0 14px 24px;
+    }
+
+    .tobruk-map {
+      width: 48%;
     }
 
     .clear {
@@ -480,9 +483,11 @@
 
       .insert-photo,
       .insert-photo.left,
-      .insert-photo.right {
+      .insert-photo.right,
+      .tobruk-map {
         width: 100%;
-        margin: 0;
+        float: none;
+        margin: 0 0 16px 0;
       }
     }
 
@@ -521,7 +526,7 @@
     <section class="hero">
       <div class="hero-banner">
         <div class="hero-copy">
-          <p class="eyebrow">Escenario 1 · Operación Crussader</p>
+          <p class="eyebrow">Escenario 6 · Frente del Desierto</p>
           <h1>Tobruk</h1>
           <div class="subtitle">El Asedio de Tobruk, 1941</div>
           <p class="hero-text">Un asalto italiano contra una posición avanzada del perímetro defensivo de Tobruk, con trincheras, campos de minas, emplazamientos fijos y una guarnición de británicos y Commonwealth decidida a mantener la línea a toda costa.</p>
@@ -536,13 +541,21 @@
       <article class="panel text">
         <h2 class="section-title">Fuerzas enfrentadas</h2>
         <p class="lead">Informe operacional sobre un asalto temprano al perímetro de Tobruk. La acción enfrenta a una posición aliada fortificada, defendida por tropas británicas y del Commonwealth, contra un ataque italiano decidido a abrir una brecha en las defensas del puerto.</p>
+
+        <figure class="insert-photo right tobruk-map">
+          <img src="img/tobruk_mapa.jpg" alt="Mapa o imagen de apoyo del escenario de Tobruk" />
+        </figure>
+
         <p>Esta batalla se libra entre las fuerzas británicas y del Commonwealth contra fuerzas italianas.</p>
         <p>Los defensores aliados deben elegirse de los selectores apropiados de pelotón reforzado británico y del Commonwealth. Representan a la guarnición que defendía Tobruk, especialmente a la 18.ª Brigada Australiana y elementos del Ejército Indio Británico.</p>
         <p>Las fuerzas italianas deben elegirse del selector de pelotón reforzado de África en guerra de <em>Armies of Italy and the Axis</em>. En esta versión del escenario no hay fuerzas alemanas: el ataque es puramente italiano.</p>
 
+        <div class="clear"></div>
+
         <h3 class="subsection-title">Despliegue</h3>
         <p>El jugador aliado es el defensor y despliega todas sus unidades en su lado de la mesa, entre la trinchera trampa y la línea media. Estas unidades pueden desplegarse ocultas, según las reglas habituales de <em>Bolt Action</em>.</p>
         <p>El defensor debe colocar su cañón anticarro, su equipo de ametralladora y además un equipo anticarro o un equipo de mortero en los emplazamientos, de modo que todos queden ocupados. Las unidades italianas no comienzan sobre la mesa. El atacante debe designar al menos la mitad de su fuerza para formar la primera oleada; el resto queda en reserva.</p>
+
         <figure class="insert-photo">
           <a class="deployment-link" href="img/despliegue_tobruk.png" target="_blank" rel="noopener noreferrer">
             <img class="deployment-map" src="img/despliegue_tobruk.png" alt="Mapa de despliegue del escenario de Tobruk" />
@@ -583,6 +596,7 @@
         <p>Al final de la partida, determina qué bando ha ganado sumando los puntos de victoria obtenidos por cada uno. Si un bando consigue al menos 2 puntos más que el otro, obtiene una victoria clara. En caso contrario, el resultado se considera demasiado ajustado y la batalla termina en empate.</p>
         <p>El defensor británico recibe 2 puntos de victoria por cada unidad italiana destruida.</p>
         <p>El jugador italiano recibe 1 punto de victoria por cada unidad aliada destruida. Si destruye los tres emplazamientos, obtiene además 2 puntos de victoria por cada una de sus unidades que se encuentre en la zona de brecha y 3 puntos de victoria por cada unidad propia que haya cruzado el borde de la mesa del defensor antes del final de la partida.</p>
+
         <div class="photo-row">
           <figure class="insert-photo">
             <img src="img/page4_img1.jpeg" alt="Posición defensiva en el desierto, apropiada para Tobruk" />
