@@ -249,6 +249,9 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+
+    .photo-row .insert-photo img {
       filter: grayscale(1) sepia(0.32) contrast(1.02);
     }
 
@@ -264,6 +267,11 @@
 
     .tobruk-map {
       width: 48%;
+    }
+
+    .tobruk-map img,
+    .deployment-map {
+      filter: none !important;
     }
 
     .clear {
@@ -314,7 +322,7 @@
       border: 1px solid rgba(36,24,15,0.18);
       box-shadow: 0 12px 22px rgba(0,0,0,0.14);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      filter: none;
+      filter: none !important;
     }
 
     .deployment-caption {
@@ -543,7 +551,9 @@
         <p class="lead">Informe operacional sobre un asalto temprano al perímetro de Tobruk. La acción enfrenta a una posición aliada fortificada, defendida por tropas británicas y del Commonwealth, contra un ataque italiano decidido a abrir una brecha en las defensas del puerto.</p>
 
         <figure class="insert-photo right tobruk-map">
-          <img src="img/tobruk_mapa.jpg" alt="Mapa o imagen de apoyo del escenario de Tobruk" />
+          <a href="img/tobruk_mapa.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="img/tobruk_mapa.jpg" alt="Mapa o imagen de apoyo del escenario de Tobruk" />
+          </a>
         </figure>
 
         <p>Esta batalla se libra entre las fuerzas británicas y del Commonwealth contra fuerzas italianas.</p>
