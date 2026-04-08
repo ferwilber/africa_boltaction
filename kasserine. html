@@ -1,1 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kasserine — Paso de Kasserine, febrero de 1943</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="shortcut icon" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/favicon.png" />
+  <style>
+    :root {
+      --ink: #24180f;
+      --ink-soft: #5f4832;
+      --paper: rgba(236, 219, 188, 0.9);
+      --paper-2: rgba(222, 196, 151, 0.9);
+      --line: rgba(56, 39, 24, 0.18);
+      --shadow: rgba(0, 0, 0, 0.22);
+      --red: #8e3223;
+      --brown: rgba(56, 35, 21, 0.92);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background-color: #a97844;
+      background-image: url('img/background.png');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: rgba(0,0,0,0.08);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--brown);
+      border-bottom: 1px solid rgba(232,210,168,0.16);
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-inner {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #eadfca;
+    }
+
+    .brand-logo {
+      width: 88px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.24));
+    }
+
+    .topbar-title {
+      color: #eadfca;
+      text-decoration: none;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.3rem, 2.8vw, 2.25rem);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      line-height: 0.95;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.22);
+      white-space: nowrap;
+    }
+
+    .page {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(236,219,188,0.82), rgba(212,178,126,0.72)),
+        url('img/hero-principal.jpg') center center / cover no-repeat;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 44px var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-banner {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 30px 28px 26px;
+      background: linear-gradient(rgba(239,225,198,0.85), rgba(221,193,149,0.78));
+      border-right: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.35rem, 2.8vw, 2.2rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-text {
+      margin: 18px 0 0;
+      max-width: 60ch;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    .hero-side {
+      min-height: 290px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(239,225,198,0.72), rgba(212,178,126,0.66));
+      border-left: 1px solid var(--line);
+      padding: 22px;
+    }
+
+    .hero-side-logo {
+      width: min(500px, 100%);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: linear-gradient(rgba(237,221,191,0.92), rgba(220,192,147,0.9));
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(90deg, rgba(36,24,15,0.015), rgba(36,24,15,0.015) 1px, transparent 1px, transparent 110px);
+      opacity: 0.45;
+    }
+
+    .panel > * { position: relative; z-index: 1; }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .subsection-title {
+      margin: 22px 0 10px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 1.5rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--red);
+      letter-spacing: 0.04em;
+    }
+
+    .lead {
+      font-style: italic;
+      color: #6b4d34;
+      border-left: 4px solid rgba(142,50,35,0.35);
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .insert-photo {
+      margin: 0;
+      max-width: none;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(36,24,15,0.16);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+      padding: 10px;
+      width: 100%;
+      float: none;
+    }
+
+    .photo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .insert-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: grayscale(1) sepia(0.32) contrast(1.02);
+    }
+
+    .insert-photo figcaption {
+      margin: 10px 2px 0;
+      font-size: 0.94rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    .text p,
+    .text li {
+      font-size: 1rem;
+      line-height: 1.72;
+      color: var(--ink-soft);
+    }
+
+    .text p { margin: 0 0 12px; }
+
+    .text ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+
+    .scenario-meta {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .deployment-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      max-width: 1180px;
+      margin: 18px auto 12px;
+    }
+
+    .deployment-caption {
+      margin-top: 10px;
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    .meta-box {
+      background: linear-gradient(rgba(237,221,191,0.92), rgba(220,192,147,0.9));
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meta-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(90deg, rgba(36,24,15,0.015), rgba(36,24,15,0.015) 1px, transparent 1px, transparent 110px);
+      opacity: 0.45;
+    }
+
+    .meta-box > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-box h3 {
+      margin: 0 0 10px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 1.35rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .meta-box p,
+    .meta-box li {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .meta-box ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+
+    .deployment-map {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(36,24,15,0.18);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      text-decoration: none;
+      color: #eadfca;
+      background: rgba(43,33,21,0.92);
+      border: 1px solid rgba(234,217,182,0.16);
+      padding: 12px 16px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.14);
+    }
+
+    .back-link:hover {
+      background: rgba(60,45,29,0.94);
+    }
+
+    footer {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 0 20px 36px;
+    }
+
+    .footer-card {
+      background: rgba(43,33,21,0.92);
+      color: #eadfca;
+      border: 1px solid rgba(234,217,182,0.15);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.14);
+    }
+
+    .smallcaps {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-banner,
+      .content,
+      .scenario-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner {
+        padding: 8px 14px;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 72px;
+      }
+
+      .topbar-title {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        white-space: normal;
+      }
+
+      .page {
+        padding: 18px 14px 28px;
+      }
+
+      .hero-copy,
+      .panel,
+      .meta-box {
+        padding: 18px;
+      }
+
+      .photo-row {
+        grid-template-columns: 1fr;
+      }
+
+      .insert-photo {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Ir a la página principal de Duelo en la Arena">
+        <img class="brand-logo" src="img/logo.png" alt="Duelo en la Arena" />
+      </a>
+      <a class="topbar-title" href="index.html">Duelo en la Arena</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-banner">
+        <div class="hero-copy">
+          <p class="eyebrow">Escenario 4 · Túnez interior</p>
+          <h1>Kasserine</h1>
+          <div class="subtitle">Paso de Kasserine, febrero de 1943</div>
+          <p class="hero-text">El amanecer apenas rompe sobre las colinas áridas del paso de Kasserine. Las fuerzas estadounidenses han improvisado una línea defensiva alrededor de un pequeño oasis, mientras el Afrika Korps avanza con experiencia desértica para romper la posición y abrir el paso hacia el interior.</p>
+        </div>
+        <div class="hero-side">
+          <img class="hero-side-logo" src="img/logo.png" alt="Logo de Duelo en la Arena" />
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <article class="panel text">
+        <h2 class="section-title">Fuerzas enfrentadas</h2>
+        <p class="lead">Informe operacional del paso de Kasserine. Un combate rápido y brutal entre tropas estadounidenses aún inexpertas frente a la guerra del desierto y un Afrika Korps decidido a romper la línea defensiva y explotar la brecha hacia el interior tunecino.</p>
+        <p><strong>Afrika Korps vs Ejército de Estados Unidos – 1000 puntos.</strong></p>
+        <p>Defensores: Ejército de Estados Unidos (selector reforzado adecuado, 1000 puntos).</p>
+        <p>Atacantes: Afrika Korps (selector reforzado alemán África, 1000 puntos).</p>
+
+        <h3 class="subsection-title">Despliegue</h3>
+        <p>Siguiendo el mapa, el defensor estadounidense despliega en el cuadrante superior derecho, correspondiente a la zona sombreada azul. El atacante del Afrika Korps entra desde el cuadrante inferior izquierdo, señalado en naranja.</p>
+        <p>El centro de la mesa contiene una zona neutral circular de 12” de radio que representa el área disputada alrededor del oasis.</p>
+        <p>El defensor despliega toda su fuerza al inicio y puede usar ocultación si el escenario lo permite. El atacante debe dividir su ejército: al menos la mitad forma la primera oleada entrando por su borde, mientras que el resto queda en reservas.</p>
+        <figure class="insert-photo">
+          <a class="deployment-link" href="img/Despliegue_kass.jpeg" target="_blank" rel="noopener noreferrer">
+            <img class="deployment-map" src="img/Despliegue_kass.jpeg" alt="Mapa de despliegue del escenario del Paso de Kasserine" />
+          </a>
+          <figcaption>Plano de despliegue del escenario. Haz clic sobre la imagen para verla ampliada.</figcaption>
+        </figure>
+
+        <h3 class="subsection-title">Reglas especiales</h3>
+        <h3 class="subsection-title">Combate en el desierto</h3>
+        <p>La mesa representa terreno árido con zonas de arena blanda, afloramientos rocosos y un oasis central que cuenta como terreno ligero y proporciona cobertura.</p>
+
+        <h3 class="subsection-title">Regla del desierto – Fatiga y calor</h3>
+        <p>El entorno afecta directamente a la movilidad. La infantería no puede realizar órdenes de <em>Run</em> a menos que esté a 6” o menos del oasis.</p>
+
+        <h3 class="subsection-title">Objetivo</h3>
+        <p><strong>Afrika Korps:</strong> romper la línea americana, controlar el oasis y penetrar hacia la zona de despliegue enemiga.</p>
+        <p><strong>EE. UU.:</strong> resistir el asalto e impedir que el enemigo controle el oasis.</p>
+
+        <h3 class="subsection-title">Duración de la partida</h3>
+        <p>La partida dura 6 turnos estándar. Al final del turno 6, con un resultado de 1–3 la partida termina; con un 4–6 se juega un turno adicional.</p>
+
+        <h3 class="subsection-title">¡Victoria!</h3>
+        <p>Se obtiene 1 punto de victoria por cada unidad enemiga destruida.</p>
+        <p>Se obtienen 2 puntos de victoria adicionales si se controla el oasis al final de la partida.</p>
+        <p>Además, el atacante recibe 3 puntos de victoria por cada unidad que alcance el borde defensor.</p>
+        <p>Una diferencia de 2 o más puntos de victoria supone una victoria clara. Si la diferencia es menor, el resultado se considera un empate táctico.</p>
+        <div class="photo-row">
+          <figure class="insert-photo">
+            <img src="img/page4_img1.jpeg" alt="Columna avanzando por terreno quebrado, apropiado para Kasserine" />
+          </figure>
+          <figure class="insert-photo">
+            <img src="img/page5_img1.jpeg" alt="Blindados alemanes en terreno norteafricano" />
+          </figure>
+        </div>
+      </article>
+
+      <section class="scenario-meta">
+        <section class="meta-box">
+          <h3>Resumen rápido</h3>
+          <ul>
+            <li>Defensor: Estados Unidos en el cuadrante superior derecho.</li>
+            <li>Atacante: Afrika Korps entrando desde el cuadrante inferior izquierdo.</li>
+            <li>Oasis central dentro de una zona neutral de 12”.</li>
+            <li>La infantería sufre restricciones de movimiento por fatiga y calor.</li>
+            <li>El oasis es el punto clave de control de la partida.</li>
+          </ul>
+        </section>
+
+        <a class="back-link" href="index.html">← Volver a la campaña</a>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-card">
+      <div>
+        <div class="smallcaps">Duelo en la Arena</div>
+        <div>Escenario Kasserine · Bolt Action · Norte de África</div>
+      </div>
+      <div>
+        <div class="smallcaps">Estado del expediente</div>
+        <div>Página de escenario operativa</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
 
